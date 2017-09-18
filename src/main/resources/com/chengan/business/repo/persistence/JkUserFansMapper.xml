@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkUserFansMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkUserFans">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="fan_id" jdbcType="INTEGER" property="fanId" />
+		<result column="fan_name" jdbcType="VARCHAR" property="fanName" />
+		<result column="fan_pic_path" jdbcType="VARCHAR" property="fanPicPath" />
+		<result column="fan_desc" jdbcType="VARCHAR" property="fanDesc" />
+	</resultMap>
+</mapper>

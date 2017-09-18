@@ -1,0 +1,1 @@
+select nickname from jk_user;

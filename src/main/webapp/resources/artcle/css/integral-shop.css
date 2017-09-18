@@ -1,0 +1,169 @@
+.integral-shop-banner{
+  height: 708px;
+  background-image: url("../images/integral-shop-banner.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+}
+.integral-shop-list{
+}
+.integral-shop-list ul{
+  overflow: hidden;
+  margin: 0 auto;
+}
+.integral-shop-list li{
+  float: left;
+  width: 374px;
+  margin: 0 18px 36px 18px;
+  padding: 1em;
+  background-color: #e8f6fa;
+  box-sizing: border-box;
+}
+.integral-shop-list .gift-photo{
+  width: 346px;
+  height: 277px;
+  overflow: hidden;
+}
+.integral-shop-list .gift-name{
+  text-align: center;
+  padding: 0.8em 0 1.4em 0;
+  background: url("../images/gift-name-bg.png") no-repeat 50% 100% / auto 9px;
+}
+.integral-shop-list .gift-cost{
+  position: relative;
+  padding: 0.5em 120px 0.5em 0;
+  font-size: 18px;
+  color: #ff5f27;
+}
+.integral-shop-list .exchange-btn{
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  display: block;
+  width: 112px;
+  line-height: 30px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #ff5f27;
+  color: #fff;
+}
+.shop-details{
+  padding: 75px;
+}
+.details-title{
+  overflow: hidden
+}
+.details-title>div{
+  float: left;
+  height: 300px;
+}
+.details-title .gift-img{
+  position: relative;
+  width: 310px;
+  overflow: hidden;
+}
+.details-title .gift-img img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  -webkit-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+.details-title .gift-desc{
+  position: relative;
+  width: 774px;
+  padding: 0 0 0 2em;
+  font-size: 16px;
+  line-height: 1.8em;
+  box-sizing: border-box;
+}
+.details-title .gift-desc .gift-name{
+  font-size: 22px;
+}
+.details-title .gift-desc .gift-price{
+  overflow: hidden;
+  margin: 2em 0 0 0;
+}
+.details-title .gift-desc .gift-price>div{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 22px;
+}
+.details-title .gift-desc .old-price{
+  color: #b8b8b8;
+  text-decoration: line-through;
+  margin-right: 240px;
+}
+.details-title .gift-desc .integral-price{
+  color: #ff5f27;
+}
+.gift-intro{
+  margin: 2em 0
+}
+.gift-intro h3{
+  font-size: 20px;
+  margin: 2em 0 1em 0;
+}
+.gift-intro p{
+  color: #656565;
+}
+.exchange-btn-bar{
+  text-align: center
+}
+.exchange-btn-bar a{
+  display: inline-block;
+  vertical-align: middle;
+  width: 184px;
+  line-height: 52px;
+  text-align: center;
+  border-radius: 0.4em;
+  background-color: #ff8a34;
+  font-size: 18px;
+  color: #fff;
+}
+.verify-box{
+  padding: 75px;
+}
+.verify-addr{
+  color: #656565;
+  font-size: 16px
+}
+.verify-addr h3{
+  margin: 0.8em 0;
+  color: #212121;
+}
+.verify-btn-bar{
+  text-align: center;
+  margin: 4em 0
+}
+.verify-btn-bar a{
+  display: inline-block;
+  vertical-align: middle;
+  width: 184px;
+  line-height: 52px;
+  text-align: center;
+  border-radius: 0.4em;
+  background-color: #ff8a34;
+  font-size: 18px;
+  color: #fff;
+}
+.verify-successed{
+  text-align: center;
+  font-size: 24px;
+  width: 596px;
+  padding: 100px 0;
+  margin: 2em auto;
+  background-color: #e9f7fb
+}
+.verify-successed p{
+  margin: 1em 0;
+}
+.icon.successed-blue-icon{
+  width: 2em;
+  height: 2em;
+  background: url('../images/successed-blue-icon.png') no-repeat 50% 50% / 100%;
+}

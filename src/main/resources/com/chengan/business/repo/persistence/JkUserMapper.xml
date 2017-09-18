@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkUserMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkUser">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="nickname" jdbcType="VARCHAR" property="nickname" />
+		<result column="group_id" jdbcType="INTEGER" property="groupId" />
+		<result column="id_card" jdbcType="VARCHAR" property="idCard" />
+		<result column="id_type" jdbcType="INTEGER" property="idType" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="wxopenid" jdbcType="VARCHAR" property="wxopenid" />
+		<result column="gender" jdbcType="INTEGER" property="gender" />
+		<result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="head_mini_pic_path" jdbcType="VARCHAR"
+			property="headMiniPicPath" />
+		<result column="head_pic_path" jdbcType="VARCHAR" property="headPicPath" />
+		<result column="slogan" jdbcType="VARCHAR" property="slogan" />
+		<result column="tag" jdbcType="VARCHAR" property="tag" />
+		<result column="user_level" jdbcType="INTEGER" property="userLevel" />
+		<result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+		<result column="register_code" jdbcType="VARCHAR" property="registerCode" />
+		<result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
+		<result column="point" jdbcType="INTEGER" property="point" />
+		<result column="follows" jdbcType="INTEGER" property="follows" />
+		<result column="fans" jdbcType="INTEGER" property="fans" />
+		<result column="balance" jdbcType="DECIMAL" property="balance" />
+		<result column="extra_int" jdbcType="INTEGER" property="extraInt" />
+		<result column="extra_double" jdbcType="DECIMAL" property="extraDouble" />
+		<result column="extra_str" jdbcType="VARCHAR" property="extraStr" />
+		<result column="device_code" jdbcType="CHAR" property="deviceCode" />
+		<result column="location" jdbcType="VARCHAR" property="location" />
+		<result column="hot" jdbcType="INTEGER" property="hot" />
+		<result column="influence" jdbcType="INTEGER" property="influence" />
+		<result column="background_picture" jdbcType="VARCHAR"
+			property="backgroundPicture" />
+		<result column="istop" jdbcType="INTEGER" property="istop" />
+		<result column="toptime" jdbcType="TIMESTAMP" property="toptime" />
+		<result column="login_times" jdbcType="INTEGER" property="loginTimes" />
+	</resultMap>
+
+	<update id="updatePointById" parameterType="java.util.Map">
+		update jk_user SET
+		point = #{point}
+		where id=#{id}
+	</update>
+
+	<update id="updatefans" parameterType="java.util.Map">
+		update jk_user SET
+		fans =
+		fans+1
+		where id=#{id}
+	</update>
+
+	<update id="updatefollows" parameterType="java.util.Map">
+		update jk_user SET
+		follows = follows+1
+		where id=#{id}
+	</update>
+
+	<update id="updatefanscancle" parameterType="java.util.Map">
+		update jk_user SET
+		fans = fans-1
+		where id=#{id}
+	</update>
+
+	<update id="updatefollowscancle" parameterType="java.util.Map">
+		update jk_user
+		SET
+		follows = follows-1
+		where id=#{id}
+	</update>
+
+	<update id="updateExtraInt" parameterType="java.util.Map">
+		update jk_user
+		SET extra_int = extra_int-1
+		where extra_int is not null and extra_int != 0
+	</update>
+
+	<select id="getUserList" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT
+		t.nickname,t.id,t.username,t.influence,t.head_pic_path,t.slogan,t.follows,t.fans,t.point,t.tag,t.id_type
+		as idType, t.gender as gender,
+		us.edu_name,us.contract_qq,us.contract_weixin,us.company_name,us.edu_type,us.realname,t.location,t.istop
+		FROM jk_user t LEFT JOIN jk_user_info us on us.uid=t.id
+		WHERE 1=1
+		<if test="userid!=null">
+			and t.id in
+			<foreach item="item" index="index" collection="userid" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="username!=null">
+			and t.username like CONCAT('%',#{username},'%')
+		</if>
+		<if test="nicknmae!=null">
+			and t.nickname like CONCAT('%',#{nicknmae},'%')
+		</if>
+		<if test="location!=null">
+			and t.location like CONCAT('%',#{location},'%')
+		</if>
+		<if test="gender!=null">
+			and t.gender =#{gender}
+		</if>
+		<if test="idType!=null">
+			and t.id_type =#{idType}
+		</if>
+		<if test="istop!=null">
+			and t.istop =#{istop}
+		</if>
+
+		<if test="userlevel!=null">
+			and t.user_level = #{userlevel}
+		</if>
+
+	</select>
+
+	<select id="tempgetuserlist" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT c.count, u.*,ui.* from jk_user u LEFT JOIN jk_user_info ui on
+		u.id=ui.uid
+		LEFT JOIN (
+		SELECT COUNT(*)count ,c.uid from jk_user_ceritifired c WHERE c.state=0 GROUP
+		BY c.uid
+		)c on c.uid=u.id
+
+		WHERE 1=1
+		<if test="logintime!=null"><![CDATA[
+				and u.login_time >= CONCAT('', #{logintime}, '')
+			 ]]></if>
+		<if test="logintime2!=null"><![CDATA[
+				and u.login_time <= CONCAT('', #{logintime2}, '')
+			 ]]></if>
+		<if test="isauthen==0">and u.user_level =1</if>
+		<if test="isauthen==1">and u.user_level >=2</if>
+		<if test="isauthen==3">and u.user_level =1 and c.count>=1</if>
+		<if test="idtype != null ">and u.id_type =#{idtype}</if>
+		<if test="phone!=null and phone!=0 ">and u.phone like CONCAT('%',#{phone},'%')</if>
+		<if test="tag!=null and tag!=0"> and #{tag} in (
+			SELECT t.tid from jk_tags_match t WHERE t.type=0 and t.fid=u.id
+			)</if>
+	</select>
+
+	<select id="getUserByCommand" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT u.username as username
+			, u.nickname as nickname
+			, u.id as id
+			, u.phone as phone
+			, u.location as location
+			, u.influence influence
+			, u.hot as hot
+			, u.head_pic_path as head_pic_path
+			, u.background_picture as background_picture
+			, ui.realname as realname
+			, ui.company_name as company_name
+			, ui.edu_name as edu_name
+		FROM jk_user u
+		LEFT JOIN jk_user_info ui
+			ON u.id=ui.uid
+		WHERE 1=1
+		<if test="istop != null"> AND istop=#{istop}</if>
+		<if test="order != null"> ORDER BY #{order}</if>
+		<if test="page != null"> LIMIT #{page}, #{page_size}</if>
+	</select>
+
+	<update id="updateUserTop">
+		UPDATE jk_user
+		set istop = istop - 1 WHERE istop > 0
+	</update>
+
+	<update id="updateUserExtra">
+		UPDATE jk_user
+		set extra_int = extra_int - 1 WHERE extra_int > 0
+	</update>
+</mapper>

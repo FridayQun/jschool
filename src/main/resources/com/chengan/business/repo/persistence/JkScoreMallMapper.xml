@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkScoreMallMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkScoreMall">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="product_name" jdbcType="VARCHAR" property="productName" />
+		<result column="head_pic" jdbcType="VARCHAR" property="headPic" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="introduction" jdbcType="VARCHAR" property="introduction" />
+		<result column="price" jdbcType="INTEGER" property="price" />
+		<result column="desc" jdbcType="VARCHAR" property="desc" />
+		<result column="need_score" jdbcType="INTEGER" property="needScore" />
+		<result column="num" jdbcType="INTEGER" property="num" />
+		<result column="hot" jdbcType="INTEGER" property="hot" />
+		<result column="notice" jdbcType="VARCHAR" property="notice" />
+		<result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+		<result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+	</resultMap>
+</mapper>

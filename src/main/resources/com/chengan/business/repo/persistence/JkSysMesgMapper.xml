@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkSysMesgMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkSysMesg">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<result column="from_id" jdbcType="INTEGER" property="fromId" />
+		<result column="to_id" jdbcType="INTEGER" property="toId" />
+		<result column="type" jdbcType="VARCHAR" property="type" />
+		<result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
+		<result column="sid" jdbcType="VARCHAR" property="sid" />
+		<result column="istop" jdbcType="INTEGER" property="istop" />
+		<result column="isread" jdbcType="INTEGER" property="isread" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+	</resultMap>
+	<select id="getmesglist" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT m.*,u.nickname,u2.nickname as toname from jk_sys_mesg m LEFT
+		JOIN jk_user u ON u.id=m.from_id
+		LEFT JOIN jk_user u2 on u2.id=m.to_id
+		<if test="type!=null">and m.type=#{type}</if>
+		<if test="fromid!=null">and m.from_id=#{fromid}</if>
+		<if test="toid!=null">and m.to_id=#{toid}</if>
+		<if test="start!=null and end!=null">limit #{start},#{end}</if>
+
+	</select>
+
+	<select id="getmesglistuser" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT u.id as uid,
+		u.nickname,
+		u.location,
+		u.head_pic_path,
+		MAX(mesg.content)content ,
+		MAX(mesg.to_id)to_id,
+		MAX(mesg.from_id)from_id,
+		MAX(mesg.send_time)send_time,
+		MAX(mesg.type)type,MAX(mesg.id)id,MAX(mesg.sid)sid,
+		mc.count
+		from (
+		SELECT m.*
+		from jk_sys_mesg m WHERE 1=1
+		and type=0
+
+		<if test="toid!=null">and m.to_id=#{toid}</if>
+		<if test="fromid!=null">and m.from_id=#{fromid}</if>
+		ORDER BY m.send_time DESC
+		) mesg LEFT JOIN (
+		SELECT COUNT(*)count,cm.from_id
+		fROM jk_sys_mesg cm
+		WHERE 1=1
+		<if test="toid!=null">and cm.to_id=#{toid}</if>
+		and cm.isread is NULL GROUP BY cm.from_id
+		)mc on mesg.from_id =mc.from_id
+		LEFT JOIN jk_user u
+		on u.id=mesg.from_id
+
+		WHERE 1=1
+		GROUP BY mesg.from_id,mesg.to_id
+
+	</select>
+
+	<select id="getmesglistbyone" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT m.*,
+		fu.id as fid,
+		tu.id as tid,
+		fu.head_pic_path as fhead_pic_path,
+		tu.head_pic_path as thead_pic_path
+		FROM jk_sys_mesg m left join jk_user fu on fu.id =m.from_id LEFT JOIN
+		jk_user tu on tu.id=m.to_id WHERE
+		type=0 and
+		m.from_id =#{userid} and m.to_id =#{loginid}
+		or
+		m.from_id =#{loginid} and m.to_id =#{userid}
+
+	</select>
+
+	<select id="getcountbyuidnotread" parameterType="java.util.Map"
+		resultType="String">
+		SELECT COUNT(*)
+		from jk_sys_mesg t
+		WHERE 1=1
+		<if test="toid!=null">and t.to_id=#{toid}</if>
+		and t.type=0
+		and t.isread is NULL
+	</select>
+
+	<update id="updateisread" parameterType="java.util.Map">
+		UPDATE jk_sys_mesg SET isread=1
+		WHERE
+		from_id =#{fromid}
+		and
+		to_id =#{toid}
+
+
+
+
+
+	</update>
+
+
+
+
+
+
+
+
+</mapper>

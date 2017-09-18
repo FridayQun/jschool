@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkProjectApplyMapper">
+	<resultMap id="BaseResultMap"
+		type="com.chengan.business.repo.model.JkProjectApply">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="pid" jdbcType="INTEGER" property="pid" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="words" jdbcType="VARCHAR" property="words" />
+		<result column="user_name" jdbcType="VARCHAR" property="userName" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="user_pic_path" jdbcType="VARCHAR" property="userPicPath" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<select id="getProjectByApUid" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select
+		jp.id as id,
+		jp.uid as uid,
+		jp.proj_name as projName,
+		jp.proj_type as
+		projType,
+		jp.proj_needs as projNeeds,
+		jp.proj_pic_path as projPicPath,
+		jp.username as username,
+		jp.money_needs as moneyNeeds,
+		jp.people_needs
+		as peopleNeeds,
+		jp.square_needs as squareNeeds,
+		jp.other_needs as
+		otherNeeds,
+		jp.create_time as createTime,
+		jp.start_time as startTime,
+		jp.end_time as endTime,
+		jp.apply_time as applyTime,
+		jp.proj_desc as
+		projDesc,
+		jp.proj_cate as projCate,
+		jp.proj_title as projTitle,
+		jp.proj_location as projLocation,
+		jp.times_number as timesNumber,
+		jp.html_code as htmlCode,
+		jp.`status` as `status`,
+		jp.cid as cid,
+		jp.cate_name as cateName,
+		jp.extra_str as extraStr,
+		jp.extra_int as
+		extraInt,
+		jp.extra_double as extraDouble,
+		jp.browsevolume as
+		browsevolume,
+		jp.applycount as applycount,
+		DATEDIFF(localtime(),jp.create_time) as diffdate,
+		jui.company_name as
+		companyName,
+		jui.edu_name as eduName
+		from jk_project_apply a LEFT JOIN
+		jk_project jp ON a.pid=jp.id
+		join jk_user_info jui on jp.uid = jui.uid
+		join jk_project_cate jpc on jp.cid = jpc.id
+		where 1=1
+		<if test="uid"> and a.uid=#{uid,jdbcType=INTEGER}</if>
+		<if test="start!=null and end!=null"> limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}</if>
+	</select>
+
+	<select id="selectcountbyuid" parameterType="int" resultType="int">
+
+		select count(*) from jk_project_apply t where t.uid=#{uid}
+	</select>
+
+	<select id="queryProjectApplyListDetail" parameterType="int" resultType="java.util.Map">
+		select ja.id as id,
+		ja.pid as pid,
+		ja.uid as uid,
+		ja.words as words,
+		ja.user_name as userName,
+		ja.phone as phone,
+		ja.user_pic_path as userPicPath,
+		ja.status as status,
+		ja.create_time as createTime,
+		u.gender as gender,
+		u.influence as influence,
+		ui.company_name as companyName,
+		ui.edu_name as eduName
+		from jk_project_apply ja left join jk_user u
+		on ja.uid = u.id left join jk_user_info ui
+		on ja.uid = ui.uid
+		where 1=1
+		<if test="uid"> and ja.uid=#{uid,jdbcType=INTEGER}</if>
+		<if test="pid"> and ja.pid=#{pid,jdbcType=INTEGER}</if>
+	</select>
+
+</mapper>

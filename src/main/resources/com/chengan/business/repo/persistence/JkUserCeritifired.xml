@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkUserCeritifiredMapper">
+	<resultMap id="BaseResultMap"
+		type="com.chengan.business.repo.model.JkUserCeritifired">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+		<result column="realname" jdbcType="VARCHAR" property="realname" />
+		<result column="idcard_positive" jdbcType="VARCHAR" property="idcardPositive" />
+		<result column="idcard_opposite" jdbcType="VARCHAR" property="idcardOpposite" />
+		<result column="idcard_hold" jdbcType="VARCHAR" property="idcardHold" />
+		<result column="school" jdbcType="VARCHAR" property="school" />
+		<result column="edu_starttime" jdbcType="TIMESTAMP" property="eduStarttime" />
+		<result column="branch" jdbcType="VARCHAR" property="branch" />
+		<result column="club" jdbcType="VARCHAR" property="club" />
+		<result column="major" jdbcType="VARCHAR" property="major" />
+		<result column="profile" jdbcType="VARCHAR" property="profile" />
+		<result column="userno" jdbcType="VARCHAR" property="userno" />
+		<result column="location" jdbcType="VARCHAR" property="location" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="document" jdbcType="VARCHAR" property="document" />
+		<result column="state" jdbcType="INTEGER" property="state" />
+		<result column="idno" jdbcType="VARCHAR" property="idno" />
+		<result column="company" jdbcType="VARCHAR" property="company" />
+		<result column="position" jdbcType="VARCHAR" property="position" />
+	</resultMap>
+</mapper>

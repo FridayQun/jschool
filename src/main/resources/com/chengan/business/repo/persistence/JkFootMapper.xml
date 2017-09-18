@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkFootMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkFoot">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="foot_name" jdbcType="VARCHAR" property="footName" />
+		<result column="foot_en_name" jdbcType="VARCHAR" property="footEnName" />
+		<result column="foot_link" jdbcType="VARCHAR" property="footLink" />
+		<result column="foot_desc" jdbcType="VARCHAR" property="footDesc" />
+		<result column="foot_uri" jdbcType="VARCHAR" property="footUri" />
+	</resultMap>
+</mapper>

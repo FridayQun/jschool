@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkNewsCateMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkNewsCate">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="cate_name" jdbcType="VARCHAR" property="cateName" />
+		<result column="cate_pic_path" jdbcType="VARCHAR" property="catePicPath" />
+		<result column="isrecomment" jdbcType="INTEGER" property="isRecomment" />
+		<result column="cate_desc" jdbcType="VARCHAR" property="cateDesc" />
+	</resultMap>
+
+	<select id="queryJkNewsCateList" parameterType="java.util.Map"
+		resultType="com.chengan.business.repo.model.JkNewsCate">
+		select
+		n.id as id,
+		n.cate_name as cateName,
+		n.cate_pic_path as catePicPath,
+		n.isrecomment as isRecomment,
+		n.cate_desc as cateDesc
+		from jk_news_cate n
+		where 1=1
+		<if test="id!=null"> and id=#{id}</if>
+		<if test="isrecommend!=null"> and isrecomment=#{isrecomment}</if>
+	</select>
+
+	<select id="getTotalOfNewsCateByUid" parameterType="java.util.Map"
+		resultType="int">
+		select count(*) from jk_news_cate
+		where 1=1
+		<if test="id!=null"> and id=#{id}</if>
+		<if test="isrecommend!=null"> and isrecomment=#{isrecomment}</if>
+	</select>
+
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkProjectCateMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkProjectCate">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="cate_name" jdbcType="VARCHAR" property="cateName" />
+		<result column="cate_score" jdbcType="INTEGER" property="cateScore" />
+		<result column="cate_desc" jdbcType="VARCHAR" property="cateDesc" />
+		<result column="cate_pic_path" jdbcType="VARCHAR" property="catePicPath" />
+		<result column="parent_id" jdbcType="INTEGER" property="parentId" />
+		<result column="cate_level" jdbcType="INTEGER" property="cateLevel" />
+		<result column="head_pic_path" jdbcType="VARCHAR" property="headPicPath" />
+	</resultMap>
+
+	<select id="queryFirstCateList" parameterType="java.util.Map"
+		resultType="com.chengan.business.repo.model.JkProjectCate">
+		select id as id, cate_name as cateName, cate_score as
+		cateScore,cate_desc as cateDesc,cate_pic_path as catePicPath,parent_id
+		as parentId,cate_level as cateLevel,head_pic_path as headPicPath
+		from
+		jk_project_cate
+		where cate_level = 0
+	</select>
+
+	<select id="querySecondCateList" parameterType="java.util.Map"
+		resultType="com.chengan.business.repo.model.JkProjectCate">
+		select id as id, cate_name as cateName, cate_score as
+		cateScore,cate_desc as cateDesc,cate_pic_path as catePicPath,parent_id
+		as parentId,cate_level as cateLevel,head_pic_path as headPicPath
+		from
+		jk_project_cate
+		where cate_level = 1
+		<if test="parentId!=null"> and parent_id=#{parentId,jdbcType=INTEGER}</if>
+	</select>
+</mapper>

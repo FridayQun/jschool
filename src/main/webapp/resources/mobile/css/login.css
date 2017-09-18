@@ -1,0 +1,211 @@
+.login-bg{
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: url('../images/login-bg.jpg') no-repeat 0 0 / cover;
+}
+.register-link{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: #fff;
+}
+.login-box{
+  width: 61.33333%;
+  padding: 4em 0 1em 0;
+  margin: 0 auto
+}
+.login-box .form-box{
+  margin: 4em 0 0 0;
+}
+.login-box .form-group{
+  margin: 1.2em 0;
+}
+.login-box .form-group input{
+  width: 100%;
+  height: 2.4em;
+  outline: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0 0.5em 0 2em;
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, .4);
+  box-sizing: border-box;
+  color: #fff;
+}
+.login-box .form-group input::-webkit-input-placeholder{
+  color: rgba(255, 255, 255, .5);
+}
+.login-box .form-note{
+  margin: 1em 0;
+  text-align: right;
+  color: #fff;
+}
+.login-box .form-note a{
+  text-decoration: underline;
+  font-size: 90%;
+  color: rgba(255, 255, 255, .6);
+}
+.login-box .form-submit{
+  text-align: center;
+  margin: 2em 0;
+}
+.login-box .form-submit input{
+  width: 6em;
+  height: 2.5em;
+  outline: none;
+  border: 0;
+  background-color: #2e6eff;
+  color: #fff;
+}
+.login-footer{
+}
+.login-footer .other-login-title{
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  color: #fff;
+}
+.login-footer .other-login-title span{
+  position: relative;
+  display: inline-block;
+}
+.login-footer .other-login-title span:after,.login-footer .other-login-title span:before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 200%;
+  height: 1px;
+  background-color: #b7b7b7;
+}
+.login-footer .other-login-title span:after{
+  right: 110%;
+}
+.login-footer .other-login-title span:before{
+  left: 110%;
+}
+.login-footer .other-login-link{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1.2em 0;
+}
+.login-footer .other-login-link>a{
+  width: 12%;
+  margin: 0 1.4em;
+}
+
+.register-box{
+  width: 61.33333%;
+  padding: 2em 0 1em 0;
+  margin: 0 auto
+}
+
+.register-box .form-box{
+  margin: 3em 0 0 0;
+}
+
+.register-box .form-group{
+  margin: 1.2em 0;
+}
+
+.register-box .form-group.captcha-group{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.register-box .form-group.captcha-group button{
+  width: 7em;
+  font-size: 82%;
+  text-align: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+  background-color: #2e6eff;
+  margin: 0 0 0 0.5em;
+  color: #fff;
+}
+
+.register-box .form-group.captcha-group button.disable{
+  background-color: #999;
+}
+
+.register-box .form-group input{
+  width: 100%;
+  height: 2.4em;
+  outline: none;
+  border: 0;
+  padding: 0 0.5em 0 2em;
+  border: 1px solid #fff;
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, .4);
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.register-box .form-group input::-webkit-input-placeholder{
+  color: rgba(255, 255, 255, .5);
+}
+
+.register-box .form-submit{
+  text-align: center;
+}
+
+.register-box .form-submit input{
+  width: 80%;
+  height: 2.4em;
+  border-radius: 0.2em;
+  background-color: #2e6eff;
+  color: #fff;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+}
+
+.register-box .form-note{
+  text-align: center;
+  margin: 1em 0;
+  font-size: 90%;
+  color: #2e6eff;
+}
+
+.register-box .form-note a{
+  color: #2e6eff;
+}
+.register-footer{
+  text-align: center;
+  color: rgba(255, 255, 255, .5)
+}
+.register-footer.findpwd{
+  margin: 2em 0 0 0;
+}
+
+
+.user-input{
+  background: url('../images/user-input-icon.png') no-repeat 0.5em 50% / 1em;
+}
+.lock-input{
+  background: url('../images/lock-input-icon.png') no-repeat 0.5em 50% / 1em;
+}
+.refresh-input{
+  background: url('../images/refresh-icon.png') no-repeat 0.5em 50% / 1em;
+}
+.lock1-input{
+  background: url('../images/lock1-icon.png') no-repeat 0.5em 50% / 1em;
+}

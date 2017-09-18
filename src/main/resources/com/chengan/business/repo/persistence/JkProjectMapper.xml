@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkProjectMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkProject">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="proj_name" jdbcType="VARCHAR" property="projName" />
+		<result column="proj_type" jdbcType="INTEGER" property="projType" />
+		<result column="proj_needs" jdbcType="VARCHAR" property="projNeeds" />
+		<result column="proj_pic_path" jdbcType="VARCHAR" property="projPicPath" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="money_needs" jdbcType="INTEGER" property="moneyNeeds" />
+		<result column="people_needs" jdbcType="INTEGER" property="peopleNeeds" />
+		<result column="square_needs" jdbcType="INTEGER" property="squareNeeds" />
+		<result column="other_needs" jdbcType="VARCHAR" property="otherNeeds" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+		<result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+		<result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+		<result column="proj_desc" jdbcType="VARCHAR" property="projDesc" />
+		<result column="proj_cate" jdbcType="VARCHAR" property="projCate" />
+		<result column="proj_location" jdbcType="VARCHAR" property="projLocation" />
+		<result column="proj_title" jdbcType="VARCHAR" property="projTitle" />
+		<result column="times_number" jdbcType="INTEGER" property="timesNumber" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="cid" jdbcType="INTEGER" property="cid" />
+		<result column="cate_name" jdbcType="VARCHAR" property="cateName" />
+		<result column="score" jdbcType="INTEGER" property="score" />
+		<result column="extra_str" jdbcType="VARCHAR" property="extraStr" />
+		<result column="extra_int" jdbcType="INTEGER" property="extraInt" />
+		<result column="extra_double" jdbcType="DOUBLE" property="extraDouble" />
+		<result column="html_code" jdbcType="LONGVARBINARY" property="htmlCode" />
+		<result column="browsevolume" jdbcType="LONGVARBINARY"
+			property="browsevolume" />
+		<result column="applycount" jdbcType="LONGVARBINARY" property="applycount" />
+		<result column="istop" jdbcType="INTEGER" property="istop" />
+		<result column="isrecomment" jdbcType="INTEGER" property="isrecomment" />
+	</resultMap>
+
+	<select id="queryProjectList" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select v.* from(
+		select t.*,k.*,j.*,m.admireCount,n.collectCount from (
+		select
+		jp.id as id,
+		jp.uid as uid,
+		jp.proj_name as projName,
+		jp.proj_type as projType,
+		jp.proj_needs as projNeeds,
+		jp.proj_pic_path as projPicPath,
+		jp.username as username,
+		jp.phone as phone,
+		jp.money_needs as moneyNeeds,
+		jp.people_needs as peopleNeeds,
+		jp.square_needs as squareNeeds,
+		jp.other_needs as otherNeeds,
+		jp.create_time as createTime,
+		jp.start_time as startTime,
+		jp.end_time as endTime,
+		jp.apply_time as applyTime,
+		jp.proj_desc as projDesc,
+		jp.proj_cate as projCate,
+		jp.proj_title as projTitle,
+		jp.proj_location as projLocation,
+		jp.times_number as timesNumber,
+		jp.html_code as htmlCode,
+		jp.`status` as `status`,
+		jp.cid as cid,
+		jp.cate_name as cateName,
+		jp.score as score,
+		jp.extra_str as extraStr,
+		jp.extra_int as extraInt,
+		jp.extra_double as extraDouble,
+		jp.browsevolume as browsevolume,
+		jp.applycount as applycount,
+		ju.head_pic_path as userHeadPicPath,
+		ju.gender as gender,
+		ju.influence as influence,
+		jui.company_name as companyName,
+		jui.edu_name as eduName,
+		jp.istop,
+		jp.isrecomment,
+		DATEDIFF(localtime(),jp.create_time) as diffdate
+		from jk_project jp
+		join jk_user_info jui on jp.uid = jui.uid
+		join jk_user ju on jp.uid=ju.id
+		join jk_project_cate jpc on jp.cid = jpc.id
+		where 1=1
+		<if test="uid!=null"> and jp.uid=#{uid,jdbcType=INTEGER}</if>
+		<if test="cid!=null"> and jp.cid=#{cid,jdbcType=INTEGER}</if>
+		<if test="projType!=null"> and jp.proj_type=#{projType,jdbcType=INTEGER}</if>
+		<if test="squareNeeds!=null"> and jp.square_needs=#{squareNeeds,jdbcType=INTEGER}</if>
+		<if test="peopleNeeds!=null"> and jp.people_needs=#{peopleNeeds,jdbcType=INTEGER}</if>
+		<if test="timesNumber!=null"> and jp.times_number=#{timesNumber,jdbcType=INTEGER}</if>
+		<if test="phone!=null"> and jp.phone like
+			CONCAT('%',#{phone,jdbcType=VARCHAR},'%')</if>
+		<if test="status!=null and status!=' '  and status!=-2  "> and jp.`status`=#{status,jdbcType=INTEGER}</if>
+		<if test="status==null or status==' '  "> and jp.`status` != 0 and jp.`status` != 2 and jp.`status`
+			!= -3</if>
+		<if test="status==-2 "> and jp.`status` != -3</if>
+		<if test="projLocation!=null"> and jp.`proj_location` = #{projLocation,jdbcType=INTEGER}</if>
+		<if test="projectIds!=null">
+			and jp.id in
+			<foreach item="item" index="index" collection="projectIds"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="status==3"> and jp.apply_time >= now()  </if>
+		<if test="parentCid!=null"> and jpc.parent_id=#{parentCid,jdbcType=INTEGER}</if>
+		<if test="projName!=null"> and jp.proj_name like
+			CONCAT('%',#{projName,jdbcType=VARCHAR},'%')</if>
+		<if test="cateName!=null"> and jp.cate_name like
+			CONCAT('%',#{cateName,jdbcType=VARCHAR},'%')</if>
+		<if test="isshutdown ==1"> and jp.end_time >= now() </if>
+		<if test="isrecomment!=null"> and jp.isrecomment=#{isrecomment,jdbcType=INTEGER}</if>
+		) t
+		left join
+		(select count(*) as admireCount,fid from jk_admire
+		where `type` =1 and is_cancel = 0
+		group by fid) m on t.id=m.fid
+		left join
+		(select count(*) as collectCount,fid from jk_user_collection
+		where `type`=1
+		group by fid) n on t.id=n.fid
+
+		left join
+		(select fid as admireFid,uid as admireUid from jk_admire
+		where `type` = 1 and is_cancel = 0
+		<if test="loginUid!=null"> and uid=#{loginUid,jdbcType=INTEGER}</if>
+		group by fid,uid
+		) k on t.id = k.admireFid
+		left join
+		(select fid as collectFid,uid as collectUid from jk_user_collection
+		where `type`=1
+		<if test="loginUid!=null"> and uid=#{loginUid,jdbcType=INTEGER}</if>
+		group by fid,uid
+		) j on t.id = j.collectFid
+
+		group by t.id
+		) v
+	</select>
+
+	<select id="queryProjectListMap" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select
+		id as id,
+		uid as uid,
+		proj_name as projName,
+		proj_type as projType,
+		proj_needs as projNeeds,
+		proj_pic_path as projPicPath,
+		username as
+		username,
+		phone as phone,
+		money_needs as moneyNeeds,
+		people_needs as
+		peopleNeeds,
+		square_needs as squareNeeds,
+		other_needs as otherNeeds,
+		create_time as createTime,
+		start_time as startTime,
+		end_time as endTime,
+		apply_time as applyTime,
+		proj_desc as projDesc,
+		proj_cate as projCate,
+		cate_name as cateName,
+		proj_title as projTitle,
+		proj_location as
+		projLocation,
+		times_number as timesNumber,
+		html_code as htmlCode,
+		browsevolume as browsevolume,
+		status
+		as status,
+		cid as cid,
+		cate_name as cateName,
+		extra_str as extraStr,
+		extra_int as extraInt,
+		extra_double as extraDouble,
+		DATEDIFF(localtime(),create_time) as diffdate,
+		IFNULL(browsevolume,0)browsevolume,
+		IFNULL(applycount,0)applycount
+		from
+		jk_project
+		where 1=1
+		<if test="uid!=null"> and uid=#{uid,jdbcType=INTEGER}</if>
+		<if test="projType!=null"> and projType=#{projType,jdbcType=INTEGER}</if>
+		<if test="squareNeeds!=null"> and squareNeeds=#{squareNeeds,jdbcType=INTEGER}</if>
+		<if test="peopleNeeds!=null"> and peopleNeeds=#{peopleNeeds,jdbcType=INTEGER}</if>
+		<if test="timesNumber!=null"> and timesNumber=#{timesNumber,jdbcType=INTEGER}</if>
+		<if test="status!=null">
+			and status in
+			<foreach item="item" index="index" collection="status" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+
+		ORDER BY create_time desc
+		<if test="start!=null and end !=null"> limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}</if>
+	</select>
+
+	<select id="getProjectListByFirstCateAndCond" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select
+		jp.id as id,
+		jp.uid as uid,
+		jp.proj_name as projName,
+		jp.proj_type as projType,
+		jp.proj_needs as projNeeds,
+		jp.proj_pic_path as projPicPath,
+		jp.username as username,
+		jp.phone as phone,
+		jp.money_needs as moneyNeeds,
+		jp.people_needs as peopleNeeds,
+		jp.square_needs as squareNeeds,
+		jp.other_needs as otherNeeds,
+		jp.create_time as createTime,
+		jp.start_time as startTime,
+		jp.end_time as endTime,
+		jp.apply_time as applyTime,
+		jp.proj_desc as projDesc,
+		jp.proj_cate as projCate,
+		jp.proj_title as projTitle,
+		jp.proj_location as projLocation,
+		jp.times_number as timesNumber,
+		jp.html_code as htmlCode,
+		jp.`status` as `status`,
+		jp.cid as cid,
+		jp.cate_name as cateName,
+		jp.extra_str as extraStr,
+		jp.extra_int as extraInt,
+		jp.extra_double as extraDouble,
+		jp.istop as istop,
+		jp.isrecomment as isrecomment,
+		jp.browsevolume as browsevolume,
+		jui.company_name as companyName,
+		jui.edu_name as eduName,
+		ju.gender as gender
+		from jk_project jp
+		join jk_user_info jui on jp.uid = jui.uid
+		join jk_project_cate jpc on jp.cid = jpc.id
+		join jk_user ju on ju.id=jp.uid
+		where 1=1
+		<if test="firstCateId!=null"> and jpc.parent_id=#{firstCateId,jdbcType=INTEGER}</if>
+		<if test="projType!=null"> and jp.proj_type=#{projType,jdbcType=INTEGER}</if>
+		<if test="isrecomment!=null"> and jp.isrecomment=#{isrecomment,jdbcType=INTEGER}</if>
+		<if test="status!=null and status!=' '  and status!=-2  "> and jp.`status`=#{status,jdbcType=INTEGER}</if>
+		<if test="status==null or status==' '  "> and jp.`status` != 0 and jp.`status` != 2 and jp.`status`
+			!= -3</if>
+	</select>
+
+	<select id="getProjectListByType" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select
+		jp.id as id,
+		jp.uid as uid,
+		jp.proj_name as projName,
+		jp.proj_type as
+		projType,
+		jp.proj_needs as projNeeds,
+		jp.proj_pic_path as projPicPath,
+		jp.username as username,
+		jp.phone as phone,
+		jp.money_needs as
+		moneyNeeds,
+		jp.people_needs as peopleNeeds,
+		jp.square_needs as
+		squareNeeds,
+		jp.other_needs as otherNeeds,
+		jp.create_time as createTime,
+		jp.start_time as startTime,
+		jp.end_time as endTime,
+		jp.apply_time as
+		applyTime,
+		jp.proj_desc as projDesc,
+		jp.proj_cate as projCate,
+		jp.proj_title as projTitle,
+		jp.proj_location as projLocation,
+		jp.times_number as timesNumber,
+		jp.html_code as htmlCode,
+		jp.`status` as
+		`status`,
+		jp.cid as cid,
+		jp.cate_name as cateName,
+		jp.extra_str as
+		extraStr,
+		jp.extra_int as extraInt,
+		jp.extra_double as extraDouble,
+		jp.browsevolume as browsevolume,
+		jui.company_name as companyName,
+		jui.edu_name as eduName
+		from jk_project
+		jp
+		join jk_user_info jui on jp.uid = jui.uid
+		where 1=1
+		<if test="projType!=null"> and jp.proj_type=#{projType,jdbcType=INTEGER}</if>
+		<if test="status!=null and status!=' '  and status!=-2  "> and jp.`status`=#{status,jdbcType=INTEGER}</if>
+		<if test="status==null or status==' '  "> and jp.`status` != 0 and jp.`status` != 2 and jp.`status`
+			!= -3</if>
+		<if test="start!=null and limit!=null"> limit #{start,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}</if>
+	</select>
+
+	<select id="queryLocationList" parameterType="java.util.Map"
+		resultType="java.lang.String">
+		select proj_location from jk_project group by proj_location
+	</select>
+
+	<select id="getTotalOfProjectByUid" parameterType="java.util.Map"
+		resultType="int">
+		select count(*) from jk_project
+		where 1=1
+		<if test="id!=null"> and uid=#{id}</if>
+		<if test="status!=null">
+			and status in
+			<foreach item="item" index="index" collection="status" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="createTime1 != null">
+			and create_time &gt;= #{createTime1}
+		</if>
+		<if test="createTime2 != null">
+			and create_time &lt; #{createTime2}
+		</if>
+	</select>
+
+	<!--一天之内的申请-->
+	<select id="getTotalProjectByTime"
+			resultType="integer">
+		select pid from jk_project_apply
+		where unix_timestamp(create_time) &lt; unix_timestamp(now()) and unix_timestamp(create_time) &gt;= unix_timestamp(now())-3600*24
+	</select>
+	
+	<select id="getRecomment" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select t.id as t,
+		t.uid as uid,
+		t.proj_name as projName,
+		t.proj_type as projType,
+		t.proj_needs as projNeeds,
+		t.proj_pic_path as projPicPath,
+		t.username as username,
+		t.phone as phone,
+		t.money_needs as moneyNeeds,
+		t.people_needs as peopleNeeds,
+		t.square_needs as squareNeeds,
+		t.other_needs as otherNeeds,
+		t.create_time as createTime,
+		t.start_time as startTime,
+		t.end_time as endTime,
+		t.apply_time as applyTime,
+		t.proj_desc as projDesc,
+		t.proj_cate as projCate,
+		t.proj_title as projTitle,
+		t.proj_location as projLocation,
+		t.times_number as timesNumber,
+		t.html_code as htmlCode,
+		t.status as status,
+		t.cid as cid,
+		t.cate_name as cateName,
+		t.score as score,
+		t.extra_str as extraStr,
+		t.extra_int as extraInt,
+		t.extra_double as extraDouble,
+		t.browsevolume as browsevolume,
+		t.applycount as applycount,
+		t.collectcount as collectcount,
+		t.istop as istop,
+		t.isrecomment as isrecomment,
+		u.influence as influence,
+		ui.company_name as companyName,
+		ui.edu_name as eduName,
+		u.gender as gender
+		from jk_project t left join jk_user_info ui on ui.uid=t.uid
+		left join jk_user u on u.id=t.uid 
+		where 1=1
+		and isrecomment=1
+		<if test="type!=-1"> and type=#{type} </if>
+		order by t.create_time desc
+		<if test="limit!=0"> limit #{limit} </if>
+	</select>
+
+	<update id="updateBrowsevolume" parameterType="java.util.Map">
+		update jk_project
+		set browsevolume = browsevolume+1
+		<if test="id!=null"> where id=#{id}</if>
+	</update>
+
+	<update id="updateApplyCount" parameterType="java.util.Map">
+		update jk_project
+		set applycount = applycount+1
+		<if test="id!=null"> where id=#{id}</if>
+	</update>
+
+	<update id="updateProjectTop">
+		UPDATE jk_project
+		set istop = istop - 1 WHERE istop > 0
+	</update>
+</mapper>

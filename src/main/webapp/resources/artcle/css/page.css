@@ -1,0 +1,10 @@
+.single-page{
+  background-color: #f4f4f4;
+  padding: 40px 0;
+}
+.page-inner{
+  padding: 1em 2em;
+  border: 1px solid #d2d2d2;
+  line-height: 1.6em;
+  background-color: #fff;
+}

@@ -1,0 +1,58 @@
+.apply-section{
+  background-color: #f4f4f4;
+  padding: 40px 0
+}
+.apply-section .apply-title{
+  font-size: 18px
+}
+.apply-section .apply-title p{
+  margin: 0.5em 0;
+  padding: 0 1em
+}
+.apply-section .apply-title h3{
+  font-size: 22px;
+  margin: 0;
+  padding: 0 1em;
+  line-height: 74px;
+  border-left: 2px solid #08aeec;
+  background-color: #fff
+}
+.apply-section .apply-content{
+  padding: 24px 0
+}
+.apply-section .apply-content-title{
+  font-size: 18px;
+  width: 120px;
+  line-height: 44px;
+  text-align: center;
+  background-color: #fff
+}
+.apply-section .apply-input-box{
+  padding: 30px;
+  background-color: #fff
+}
+.apply-section .apply-input-box textarea{
+  width: 100%;
+  height: 375px
+}
+.apply-section .form-submit-group{
+  text-align: center;
+  margin: 4em 0
+}
+.apply-section .form-submit-group button{
+  width: 80px;
+  height: 34px;
+  border: 0;
+  border-radius: 0.3em;
+  outline: none;
+  color: #fff;
+  background-color: #00adec;
+  box-sizing: border-box
+}
+.apply-section .form-submit-group button:last-child{
+  background-color: #fff;
+  color: #00adec
+}
+.apply-section .form-submit-group button:hover{
+  cursor: pointer
+}

@@ -1,0 +1,252 @@
+.search-bar {
+	position: relative;
+	padding: 8px 3.5em 8px 1em;
+	background-color: #00adec;
+}
+
+.search-bar input {
+	width: 100%;
+	height: 2em;
+	outline: none;
+	border-radius: 0.4em;
+	padding: 0 0.5em 0 2em;
+	border: 1px solid #fff;
+	background: url('../images/search-white-icon.png') no-repeat 0.4em 50%/1.4em;
+	box-sizing: border-box;
+	color: #fff;
+}
+
+.search-bar input::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, .9);
+}
+
+.search-bar .publish-link {
+	position: absolute;
+	top: 8px;
+	right: 1em;
+	width: 2em;
+	height: 2em;
+	background: url('../images/publish-white-icon.png') no-repeat 50% 50%/85%;
+}
+
+.filter-bar {
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0.5em 0;
+	background-color: #fafafa;
+	z-index: 11;
+}
+
+.filter-bar .filter-opts {
+	width: 100%;
+	padding: 0.5em 0;
+	border-left: 1px solid rgba(225, 225, 225, .62);
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.filter-bar .filter-opts.active {
+	
+}
+
+.filter-bar .filter-opts.active.arrows {
+	-webkit-transform: rotate(180deg) translateY(50%);
+	transform: rotate(180deg) translateY(50%);
+}
+
+.filter-bar .filter-opts:first-child {
+	border-left: 0;
+}
+
+.filter-bar .arrows {
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	height: 0;
+	margin: 0.2em 0 0 0.5em;
+	border: 0.4em solid transparent;
+	border-top-color: #333;
+}
+
+.filter-tools {
+	position: relative;
+}
+
+.filter-list-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.filter-sort-list {
+	position: absolute;
+	top: 44px;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	padding: 0 1.2em;
+	box-sizing: border-box;
+	box-shadow: 0 1px 3px #999;
+	z-index: 10;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.filter-sort-list.closed {
+	-webkit-transform: translateY(-100%);
+	transform: translateY(-100%);
+	opacity: 0;
+}
+
+.filter-sort-list li {
+	padding: 1em 0;
+	border-bottom: 1px solid rgba(225, 225, 225, .62);
+}
+
+.filter-sort-list li.selected {
+	color: #00adec;
+}
+
+.filter-sort-list li:last-child {
+	border-bottom: 1px solid transparent;
+}
+
+.creativity-list {
+	padding: 1em 1em 0 1em;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	font-size: 85%;
+}
+
+.creativity-list>div {
+	width: 98.5%;
+	margin: 0 0 0.8em 0;
+}
+
+.creativity-list .creativity-photo {
+	overflow: hidden;
+}
+
+.creativity-list .creativity-photo img {
+	width: 147.59px;
+	height: 103.98px;
+}
+
+.creativity-list .creativity-photo img {
+	
+}
+
+@media screen and (min-width: 359px) {
+	.creativity-list .creativity-photo img {
+		width: 132。72px;
+		height: 93.50px;
+	}
+}
+
+@media screen and (min-width: 410px) {
+	.creativity-list .creativity-photo img {
+		width: 147.59px;
+		height: 103.98px;
+	}
+}
+
+.creativity-list .base-info {
+	position: relative;
+	width: 39%;
+}
+
+.creativity-list .author-base, .creativity-list .author-school {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.creativity-list .author-base {
+	padding: 0 0.3em 0 0
+}
+
+.creativity-list .creativity-title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 0.3em 0.5em;
+	background-color: rgba(0, 0, 0, .5);
+	color: #fff;
+	box-sizing: border-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.creativity-list .creativity-author {
+	padding: 0.3em 0.3em;
+	background-color: #eee;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	box-sizing: border-box;
+	width: 48.5%;
+}
+
+.creativity-list .detail-col {
+	width: 40%;
+	float: right;
+	vertical-align: top;
+	height: 100%;
+	position: relative;
+}
+
+.creativity-list .author-link {
+	width: 4em;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	text-align: center;
+	padding: .3em 0;
+	background-color: #00adec;
+	color: #fff;
+}
+
+.creativity-list .author-name {
+	
+}
+
+.creativity-list .author-name span {
+	padding: 0 0.2em 0 0
+}
+
+.icon.icon-heart {
+	background: url('../images/red-heart-icon.png') no-repeat 50% 50%/auto
+		60%;
+}
+
+.main-box {
+}
+
+.title-bar {
+	width: 100%;
+	height: 200px;
+	background: url(../images/home-ad-3.jpg);
+	background-position: 0 0;
+	background-size: 100% 100%;
+	position: relative;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkUserInfoMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkUserInfo">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="realname" jdbcType="VARCHAR" property="realname" />
+		<result column="contract_qq" jdbcType="VARCHAR" property="contractQq" />
+		<result column="contract_weixin" jdbcType="VARCHAR" property="contractWeixin" />
+		<result column="contract_mail" jdbcType="VARCHAR" property="contractMail" />
+		<result column="contract_weibo" jdbcType="VARCHAR" property="contractWeibo" />
+		<result column="company_name" jdbcType="VARCHAR" property="companyName" />
+		<result column="depart_name" jdbcType="VARCHAR" property="departName" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="location" jdbcType="VARCHAR" property="location" />
+		<result column="edu_type" jdbcType="INTEGER" property="eduType" />
+		<result column="edu_name" jdbcType="VARCHAR" property="eduName" />
+		<result column="edu_collage" jdbcType="VARCHAR" property="eduCollage" />
+		<result column="edu_time" jdbcType="TIMESTAMP" property="eduTime" />
+		<result column="edu_club" jdbcType="VARCHAR" property="educlub" />
+		<result column="edu_major" jdbcType="VARCHAR" property="edumajor" />
+		<result column="permissions" jdbcType="INTEGER" property="permissions" />
+	</resultMap>
+</mapper>

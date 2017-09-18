@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkUserFansFollowsMapper">
+	<resultMap id="BaseResultMap"
+		type="com.chengan.business.repo.model.JkUserFansFollows">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="fan_id" jdbcType="INTEGER" property="fanId" />
+		<result column="follow_id" jdbcType="INTEGER" property="followId" />
+	</resultMap>
+
+	<delete id="deletefanfollw" parameterType="Map">
+		delete from jk_user_fans_follows where fan_id=#{fanid} and
+		follow_id=#{followid}
+	</delete>
+
+	<select id="selectfanslist" parameterType="Map" resultType="Map">
+		SELECT u.*, ui.edu_name as edu_name, ui.company_name as company_name FROM jk_user_fans_follows t LEFT JOIN jk_user u ON
+		t.fan_id=u.id LEFT JOIN jk_user_info ui ON ui.uid=u.id
+		WHERE t.follow_id=#{id}
+
+	</select>
+	<select id="selectfollowslist" parameterType="Map" resultType="Map">
+		SELECT u.*, ui.edu_name as edu_name, ui.company_name as company_name FROM jk_user_fans_follows t LEFT JOIN jk_user u ON
+		t.follow_id=u.id LEFT JOIN jk_user_info ui ON ui.uid=u.id
+		WHERE t.fan_id=#{id}
+	</select>
+
+</mapper>

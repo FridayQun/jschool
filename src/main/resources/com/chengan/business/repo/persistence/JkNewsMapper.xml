@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkNewsMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkNews">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="company_name" jdbcType="VARCHAR" property="companyName" />
+		<result column="edu_name" jdbcType="VARCHAR" property="eduName" />
+		<result column="head_pic_path" jdbcType="VARCHAR" property="headPicPath" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<result column="type" jdbcType="VARCHAR" property="type" />
+		<result column="pic_path" jdbcType="VARCHAR" property="picPath" />
+		<result column="htmlcode" jdbcType="LONGVARBINARY" property="htmlcode" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="source" jdbcType="VARCHAR" property="source" />
+		<result column="source_type" jdbcType="INTEGER" property="sourceType" />
+		<result column="browsevolume" jdbcType="LONGVARBINARY"
+			property="browsevolume" />
+		<result column="istop" jdbcType="INTEGER" property="istop" />
+		<result column="isrecomment" jdbcType="INTEGER" property="isrecomment" />
+	</resultMap>
+
+	<select id="queryJkNewsList" parameterType="java.util.Map"
+		resultType="com.chengan.business.repo.model.JkNews">
+		select
+		n.id as id,
+		n.title as title,
+		n.description as description,
+		n.uid as uid,
+		n.username as username,
+		n.head_pic_path as headPicPath,
+		n.content as content,
+		n.htmlcode as htmlcode,
+		n.`type` as `type`,
+		n.pic_path as picPath,
+		n.`status` as `status`,
+		n.company_name as companyName,
+		n.edu_name as eduName,
+		n.create_time as createTime,
+		n.source as source,
+		n.source_type as sourceType,
+		n.browsevolume as browsevolume,
+		n.istop as istop,
+		n.isrecomment as isrecomment,
+		n.phone as phone
+		from jk_news n
+		where 1=1
+		<if test="title!=null"> and n.title like CONCAT('%',#{title},'%')</if>
+		<if test="phone!=null and phone!=''"> and n.phone like CONCAT('%',#{phone},'%')</if>
+		<if test="type!=null and type!=-1"> and n.`type`=#{type,jdbcType=INTEGER}</if>
+		<if test="uid!=null"> and n.uid=#{uid,jdbcType=INTEGER}</if>
+		<if test="status!=null"> and n.`status`=#{status,jdbcType=INTEGER}</if>
+		<if test="createTime!=null"> and n.`create_time`>=FROM_UNIXTIME(#{createTime,jdbcType=INTEGER})</if>
+	</select>
+	
+	<select id="queryJkNewsListWithCate" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select
+		n.id as id,
+		n.title as title,
+		n.description as description,
+		n.uid as uid,
+		n.username as username,
+		n.head_pic_path as headPicPath,
+		n.content as content,
+		n.htmlcode as htmlcode,
+		n.`type` as `type`,
+		n.pic_path as picPath,
+		n.`status` as `status`,
+		n.company_name as companyName,
+		n.edu_name as eduName,
+		n.create_time as createTime,
+		n.source as source,
+		n.source_type as sourceType,
+		n.browsevolume as browsevolume,
+		n.istop as istop,
+		n.isrecomment as isrecomment,
+		n.phone as phone,
+		nc.cate_name as cateName
+		from jk_news n left join jk_news_cate nc on nc.id=n.`type` 
+		where 1=1
+		<if test="title!=null"> and n.title like CONCAT('%',#{title},'%')</if>
+		<if test="phone!=null and phone!=''"> and n.phone like CONCAT('%',#{phone},'%')</if>
+		<if test="type!=null and type!=-1"> and n.`type`=#{type,jdbcType=INTEGER}</if>
+		<if test="uid!=null"> and n.uid=#{uid,jdbcType=INTEGER}</if>
+		<if test="status!=null"> and n.`status`=#{status,jdbcType=INTEGER}</if>
+	</select>
+
+	<select id="getTotalOfNewsByUid" parameterType="java.util.Map"
+		resultType="int">
+		select count(*) from jk_news
+		where 1=1
+		<if test="id!=null"> and uid=#{id}</if>
+		<if test="status!=null">
+			and status in
+			<foreach item="item" index="index" collection="status" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+
+	<update id="updateBrowsevolume" parameterType="java.util.Map">
+		update jk_news
+		set browsevolume = browsevolume+1
+		<if test="id!=null"> where id=#{id}</if>
+	</update>
+</mapper>

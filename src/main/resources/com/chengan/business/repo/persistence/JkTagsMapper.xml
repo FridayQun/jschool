@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkTagsMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkTags">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="tag_name" jdbcType="VARCHAR" property="tagName" />
+		<result column="tag_score" jdbcType="INTEGER" property="tagScore" />
+		<result column="tag_dimension" jdbcType="INTEGER" property="tagDimension" />
+		<result column="tag_desc" jdbcType="VARCHAR" property="tagDesc" />
+		<result column="tag_type" jdbcType="INTEGER" property="tagTYpe" />
+		<result column="parentId" jdbcType="INTEGER" property="parentId" />
+	</resultMap>
+
+	<select id="queryTagsList" parameterType="java.util.Map"
+		resultType="com.chengan.business.repo.model.JkTags">
+		select
+		t.id as id,
+		t.tag_name as tagName,
+		t.tag_score as tagScore,
+		t.tag_dimension
+		as tagDimension,
+		t.tag_desc as tagDesc,
+		t.parentId as parentId
+		from jk_tags_match tm
+		join jk_tags
+		t on tm.tid = t.id
+		where 1=1
+		<if test="fid!=null"> and tm.fid=#{fid,jdbcType=INTEGER}</if>
+		<if test="type!=null"> and tm.type=#{type,jdbcType=INTEGER}</if>
+		<if test="tagName!=null and tagName!=''"> and t.tag_name=#{tagName}</if>
+		<if test="parentId!=null"> and t.parentId=#{parentId}</if>
+	</select>
+	
+	<select id="getTagsList" parameterType="java.util.Map"
+		resultType="com.chengan.business.repo.model.JkTags">
+		select
+		t.id as id,
+		t.tag_name as tagName,
+		t.tag_type as tagType,
+		t.tag_score as tagScore,
+		t.tag_dimension as tagDimension,
+		t.tag_desc as tagDesc,
+		t.parentId as parentId
+		from jk_tags t
+		where 1=1
+		<if test="tagName!=null"> and t.tag_name=#{tagName}</if>
+		<if test="tagType!=null"> and t.tag_type=#{tagType}</if>
+		<if test="parentId!=null"> and t.parentId=#{parentId}</if>
+	</select>
+
+	<select id="getTagsFirstListPage" parameterType="java.util.Map"
+		resultType="com.chengan.business.repo.model.JkTags">
+		select
+		t.id as id,
+		t.tag_name as tagName,
+		t.tag_score as tagScore,
+		t.tag_dimension
+		as tagDimension,
+		t.tag_desc as tagDesc,
+		t.tag_type as tagType,
+		t.parentId as parentId
+		from
+		jk_tags t
+		where 1=1
+		and t.parentId=0
+	</select>
+	
+	<select id="getTagsSecondListPage" parameterType="java.util.Map"
+		resultType="com.chengan.business.repo.model.JkTags">
+		select
+		t.id as id,
+		t.tag_name as tagName,
+		t.tag_score as tagScore,
+		t.tag_dimension
+		as tagDimension,
+		t.tag_desc as tagDesc,
+		t.tag_type as tagType,
+		t.parentId as parentId
+		from
+		jk_tags t
+		where 1=1
+		and t.parentId>0
+	</select>
+</mapper>

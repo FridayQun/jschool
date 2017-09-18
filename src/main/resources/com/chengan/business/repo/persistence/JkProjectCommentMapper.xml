@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkProjectCommentMapper">
+	<resultMap id="BaseResultMap"
+		type="com.chengan.business.repo.model.JkProjectComment">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="fid" jdbcType="INTEGER" property="fid" />
+		<result column="type" jdbcType="VARCHAR" property="type" />
+		<result column="comment" jdbcType="VARCHAR" property="comment" />
+		<result column="scroe" jdbcType="INTEGER" property="scroe" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="head_pic_path" jdbcType="VARCHAR" property="headPicPath" />
+
+	</resultMap>
+	
+	<select id="getComments" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select c.id as id
+			, c.fid as fid
+			, c.uid as uid
+			, c.type as type
+			, c.comment as comment
+			, c.scroe as scroe
+			, c.head_pic_path as head_pic_path
+			, c.create_time as create_time
+			, u.nickname as username
+			, u.phone as phone
+		from jk_project_comment c left join jk_user u on c.uid=u.id
+		where 1=1
+		<if test="fid!=null"> and c.fid=#{fid}</if>
+		<if test="type!=null"> and c.type=#{type}</if>
+		<if test="uid!=null"> and c.uid=#{uid}</if>
+	</select>
+</mapper>

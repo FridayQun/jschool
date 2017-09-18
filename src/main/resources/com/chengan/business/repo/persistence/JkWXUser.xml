@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.GbWXUserMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkWXUser">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="wx_nikcname" jdbcType="VARCHAR" property="WXnickName" />
+		<result column="wx_openid" jdbcType="VARCHAR" property="wxopenid" />
+		<result column="sex" jdbcType="INTEGER" property="sex" />
+		<result column="location" jdbcType="VARCHAR" property="location" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="head_pic_path" jdbcType="VARCHAR" property="headPicPath" />
+	</resultMap>
+</mapper>

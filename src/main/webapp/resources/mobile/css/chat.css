@@ -1,0 +1,205 @@
+.chat-boy{
+  position: relative;
+  min-height: 100%;
+  padding: 1em 0.6em 55px 0.6em;
+  box-sizing: border-box;
+  overflow: auto
+}
+.chat-boy .msg-end{
+  height: 60px
+}
+.chat-boy .message-item{
+  position: relative;
+  padding: 0 50px;
+  min-height: 40px;
+  margin: 0.5em 0;
+  box-sizing: border-box
+}
+.chat-boy .message-item .guest-avatar{
+  position: absolute;
+  top: 0;
+  left: 0
+}
+.chat-boy .message-item.right{
+  text-align: right
+}
+.chat-boy .message-item.right .guest-avatar{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto
+}
+
+.chat-boy .message-item.right .message-content:after{
+  position: absolute;
+  left: auto;
+  right: -0.5em;
+  top: 77%;
+  background: url('../images/angle.png') no-repeat 0 0 / 80%
+}
+.chat-boy .guest-avatar{
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 30px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0
+}
+.chat-boy .guest-avatar img{
+	width:40px;
+	height: 40px;
+	border-radius: 100%;
+}
+
+.chat-boy .message-content{
+  position: relative;
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 0.6em;
+  font-size: 95%;
+  line-height: 1.4em;
+  background-color: #eef8fb;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  max-width:100%;
+}
+.chat-boy .message-content:after{
+  content: '';
+  position: absolute;
+  left: -0.2em;
+  top: 80%;
+  width: 1.2em;
+  height: 1.2em;
+  /* background: url('../images/angle-left.png') no-repeat 0 0 / 80% */
+}
+.chat-boy .message-item.isread .message-content{
+	background-color: #f1efef;
+}
+.chat-footer-bar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /*padding: 0 0 1.8em 0;*/
+  border-top: 1px solid #80d8f8;
+  box-shadow: 0 0 20px #80d8f8;
+  background-color: #fff;
+  /*transform: translateY(79%);*/
+}
+.chat-input-bar{
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: stretch;
+      align-self: stretch
+}
+.chat-input-bar .add-btn{
+  width: 16%;
+  height: 44px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border-right: 1px solid #e1e1e1;
+  background: url('../images/add-btn.png') no-repeat 50% 50% /1.8em
+}
+.chat-input-bar .chat-input{
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0 0.5em
+}
+.chat-input-bar .chat-input input{
+  width: 100%;
+  height: 2.4em;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  outline: none
+}
+.chat-input-bar .record-btn{
+  width: 16%;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border-left: 1px solid #e1e1e1;
+  color: #00adec
+  /*background: url('../images/record-btn.png') no-repeat 50% 50% /1.1em;*/
+}
+.face-input-box{
+  border-top: 1px solid #e1e1e1;
+}
+.swipe {
+  width:320px;
+  height: 120px;
+  padding: 0 0 1.2em 0;
+  overflow:hidden;
+  visibility: hidden;
+  position: relative;
+  background-color: #fff;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.swipe-wrap .face-group {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.swipe-wrap .face-group.col1{
+  background: url('../images/f1.png') no-repeat 0 0 / 320px;
+}
+.swipe-wrap .face-group.col2{
+  background: url('../images/f2.png') no-repeat 0 0 / 320px;
+}
+.swipe-wrap .face-group.col3{
+  background: url('../images/f3.png') no-repeat 0 0 / 320px;
+}
+.swipe-wrap .face-group.col4{
+  background: url('../images/f4.png') no-repeat 0 0 / 320px;
+}
+.swipe-wrap .face-group.col5{
+  background: url('../images/f5.png') no-repeat 0 0 / 320px;
+}
+.swipe-wrap .face-item {
+  width: 45px;
+  height: 40px;
+  position: relative;
+}
+.swipe-indicators{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5em 0;
+}
+.swipe-indicators .dot{
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, .1);
+  margin: 0 4px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.swipe-indicators .dot.active{
+  background-color: rgba(0, 0, 0, .6);
+}

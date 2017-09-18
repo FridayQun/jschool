@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkScoreExchangeMapper">
+	<resultMap id="BaseResultMap"
+		type="com.chengan.business.repo.model.JkScoreExchange">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="pid" jdbcType="INTEGER" property="pid" />
+		<result column="proj_id" jdbcType="INTEGER" property="projId" />
+		<result column="operate_name" jdbcType="VARCHAR" property="operateName" />
+		<result column="need_score" jdbcType="INTEGER" property="needScore" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="add_on" jdbcType="VARCHAR" property="addOn" />
+	</resultMap>
+	<!-- 获取兑换商平总数量 -->
+	<select id="selectcountofexshop" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT COUNT(*) from jk_score_exchange t WHERE t.pid is not NULL and
+		t.uid=#{uid}
+		<if test="type !=null"> and t.type=#{type}</if>
+	</select>
+
+	<!-- 获取从各种方式获取的积分总数量 -->
+	<select id="selectcountofanyway" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT COUNT(*) from jk_score_exchange t WHERE t.pid is NULL
+		<if test="uid !=null"> and t.uid=#{uid}</if>
+		<if test="operatename !=null"> and t.operate_name=#{operatename}</if>
+		<if test="createtime !=null"> and t.create_time=#{createtime}</if>
+		<if test="type !=null"> and t.type=#{type}</if>
+	</select>
+
+	<select id="countByUidAndTimeAndName" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT COUNT(*) from jk_score_exchange t
+		where 1=1
+		<if test="uid !=null"> and t.uid=#{uid}</if>
+		<if test="projId !=null"> and t.proj_id=#{projId}</if>
+		<if test="operateName !=null"> and t.operate_name=#{operateName}</if>
+		<if test="createTime !=null"> 
+			<![CDATA[
+				and t.create_time >= CONCAT(#{createTime},' 00:00:00')
+				and t.create_time <= CONCAT(#{createTime},' 23:59:59')
+			 ]]>
+		</if>
+	</select>
+
+	<select id="selectexchangmalllist" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT e.*,m.* from jk_score_exchange e LEFT JOIN jk_score_mall m ON
+		e.pid=m.id
+		WHERE 1=1 and e.type !=0
+		<if test="uid !=null"> and e.uid=#{uid} </if>
+		<if test="keywords !=null"> and m.product_name like
+			CONCAT('%',#{keywords},'%') </if>
+		<if test="type!=null"> and e.type=#{type}</if>
+		<if test="creattime==0"> order by e.create_time desc </if>
+		<if test="creattime==1"> order by e.create_time  </if>
+		<if test="start !=null and pagesize!=null"> limit #{start},#{pagesize} </if>
+
+	</select>
+
+	<select id="selectlisthavausermall" parameterType="java.util.Map"
+		resultType="java.util.Map">
+
+		SELECT e.*,u.*,s.*,i.* from jk_score_exchange e LEFT JOIN
+		jk_score_mall s on s.id=e.pid
+		LEFT JOIN jk_user u on u.id=e.uid LEFT JOIN jk_user_info i ON e.id=i.id
+		where 1=1
+		<if test="username!=null and username!=''">and u.username=#{username} </if>
+		<if test="productname!=null and productname!=''">and s.product_name=#{productname} </if>
+		<if test="type!=null  and type!=2"> and e.type=#{type}</if>
+
+	</select>
+
+</mapper>

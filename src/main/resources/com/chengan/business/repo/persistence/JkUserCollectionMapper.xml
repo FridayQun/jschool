@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkUserCollectionMapper">
+	<resultMap id="BaseResultMap"
+		type="com.chengan.business.repo.model.JkUserCollection">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+		<result column="fid" jdbcType="INTEGER" property="fid" />
+		<result column="uid" jdbcType="INTEGER" property="uid" />
+		<result column="collection_pic_path" jdbcType="VARCHAR"
+			property="collectionPicPath" />
+		<result column="collection_desc" jdbcType="VARCHAR" property="collectionDesc" />
+		<result column="extra_int" jdbcType="INTEGER" property="extraInt" />
+		<result column="extra_double" jdbcType="DOUBLE" property="extraDouble" />
+		<result column="extra_str" jdbcType="VARCHAR" property="extraStr" />
+	</resultMap>
+
+	<select id="getcollectproject" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT p.* from jk_user_collection c INNER JOIN jk_project p ON
+
+		c.fid=p.id where c.type=1
+		<if test="uid!=null">and c.uid=#{uid}</if>
+
+	</select>
+
+	<select id="getcollectnews" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT n.* from jk_user_collection c INNER JOIN jk_news n ON
+
+		c.fid=n.id where c.type=2
+		<if test="uid!=null">and c.uid=#{uid}</if>
+
+	</select>
+
+
+
+</mapper>

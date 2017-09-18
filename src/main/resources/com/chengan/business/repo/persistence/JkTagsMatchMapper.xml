@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkTagsMatchMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkTagsMatch">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="tid" jdbcType="INTEGER" property="tid" />
+		<result column="fid" jdbcType="INTEGER" property="fid" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+		<result column="jk_tag_matchcol" jdbcType="VARCHAR" property="jkTagMatchcol" />
+		<result column="tag_score" jdbcType="INTEGER" property="tagScore" />
+		<result column="tag_dimension" jdbcType="INTEGER" property="tagDimension" />
+	</resultMap>
+
+	<select id="getUserIdByTagPid" parameterType="java.util.Map" resultType="int">
+		SELECT distinct tm.fid as fid from jk_tags_match tm left join
+		jk_tags t on tm.tid=t.id
+		where 1=1
+
+		<if test="type!=null">and tm.type=#{type}</if>
+		<if test="tagPIds!=null">
+			and t.parentId in
+			<foreach item="item" index="index" collection="tagPIds" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+
+	</select>
+</mapper>

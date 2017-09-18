@@ -1,0 +1,26 @@
+.feedback-box{
+  padding: 1em 0.5em
+}
+.feedback-box textarea{
+  width: 100%;
+  height: 9em;
+  padding: 0.5em;
+  border: 1px solid #eee;
+  resize: none;
+  outline: none;
+  box-sizing: border-box
+}
+.feedback-box .form-submit{
+  margin: 1em 0;
+  text-align: center
+}
+.feedback-box .form-submit input{
+  width: 60%;
+  height: 2.5em;
+  outline: none;
+  border-radius: .2em;
+  box-sizing: border-box;
+  border: 1px solid #00adec;
+  background-color: #00adec;
+  color: #fff
+}

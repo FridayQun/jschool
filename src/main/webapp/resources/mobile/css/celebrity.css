@@ -1,0 +1,261 @@
+.search-bar{
+  position: relative;
+  padding: 8px 3.5em 8px 1em;
+  background-color: #00adec
+}
+.search-bar input{
+  width: 100%;
+  height: 2em;
+  outline: none;
+  border-radius: 0.4em;
+  padding: 0 0.5em 0 2em;
+  border: 1px solid #fff;
+  background: url('../images/search-white-icon.png') no-repeat 0.4em 50% / 1.4em;
+  box-sizing: border-box;
+  color: #fff
+}
+.search-bar input::-webkit-input-placeholder{
+  color: rgba(255, 255, 255, .9)
+}
+.search-bar .publish-link{
+  position: absolute;
+  top: 8px;
+  right: 1em;
+  width: 2em;
+  height: 2em;
+  background: url('../images/publish-white-icon.png') no-repeat 50% 50%/ 85%
+}
+.filter-bar{
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5em 0;
+  background-color: #fafafa;
+  border-bottom: 1px solid #e1e1e1;
+  z-index: 9999;
+}
+.filter-bar .filter-opts{
+  width: 50%;
+  padding: 0.5em 0;
+  border-left: 1px solid rgba(225, 225, 225, .62);
+  text-align: center;
+  box-sizing: border-box
+}
+.filter-bar .filter-opts.active{}
+.filter-bar .filter-opts.active .arrows{
+  -webkit-transform: rotate(180deg) translateY(50%);
+          transform: rotate(180deg) translateY(50%)
+}
+.filter-bar .filter-opts:first-child{
+  border-left: 0
+}
+.filter-bar .arrows{
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  margin: 0.2em 0 0 0.5em;
+  border: 0.4em solid transparent;
+  border-top-color: #333
+}
+.filter-tools{
+  position: relative;
+}
+.filter-select-list{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  padding: 1.5em 1.2em;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px #999;
+  z-index: 10;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-size: 90%;
+  color: #fff
+}
+.filter-select-list.closed{
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  opacity: 0
+}
+.filter-select-list .select-row{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: top;
+      -ms-flex-align: top;
+          align-items: top
+}
+.filter-select-list .select-col{
+  padding: 0.5em 0 1.1em 0
+}
+.filter-select-list .select-col span{
+  display: inline-block;
+  padding: 0 1em;
+  margin: 0.5em 0;
+  border-right: 1px solid #fff
+}
+.filter-select-list .select-col span:last-child{
+  border-right: 1px solid rgba(255, 255, 255, 0)
+}
+.filter-select-list .select-col span.active{
+  color: #00adec
+}
+.filter-select-list .select-col select{
+  height: 2em;
+  outline: none;
+  border: 0;
+  margin: 0 0.5em;
+  width: 5em;
+  padding: 0 1em 0 0;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAYAAADwdn+XAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAAAaUlEQVQoz5WOzQpAUBQGv5uFsvN+nkFKSSnFIygLScmDGpuThZ/Lnc23OTMdB3SSMt2JJSV6JrXtBUTARjjtmbPIGiA3t58ssvyQa70BOGD2yJW+sMj0IJef8iUymrgDxW/5EhmA3Hd3AJNB8hfrZh8bAAAAAElFTkSuQmCC');
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  background-size: 0.6em;
+  box-sizing: border-box
+}
+.filter-select-list .select-col select.active{
+  color: #00adec
+}
+.filter-select-list .select-col.select-title{
+  width: 3em;
+  border-right: 1px solid #fff
+}
+.filter-select-list .select-col:not(.select-title){
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0 1em
+}
+.filter-select-list .confirm-btn{
+  width: 6.5em;
+  line-height: 2em;
+  margin: 2em auto 0 auto;
+  border-radius: 0.2em;
+  background-color: rgba(0, 0, 0, .5);
+  text-align: center;
+  color: #fff
+}
+
+.filter-sort-list{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 50%;
+  background-color: rgba(0, 0, 0, .7);
+  padding: 1.5em 1.2em;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px #999;
+  z-index: 10;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-size: 86%;
+  color: #fff
+}
+
+.filter-sort-list.closed{
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  opacity: 0
+}
+
+.filter-sort-list .sort-item{
+  padding: 0.8em 0;
+  text-align: center
+}
+
+.filter-sort-list .sort-item.active{
+  color: #00adec
+}
+
+.celebrity-list{
+  padding: 0 0.5em 0.5em 0
+}
+
+.celebrity-list li a{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.8em 0;
+  border-bottom: 1px solid #e1e1e1
+}
+.celebrity-list li:last-child a{
+	border-bottom:1px solid rgba(0,0,0,0);
+}
+.celebrity-list li a .celebrity-avatar{
+  width: 20%;
+  padding: 0 0.5em;
+  box-sizing: border-box;
+  -ms-flex-negative: 0;
+      flex-shrink: 0
+}
+
+.celebrity-list li a .celebrity-avatar>div{
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+.celebrity-list li .celebrity-name span{
+	display: inline-block;
+}
+.celebrity-list li a .tags{
+  border-radius: 3px;
+  padding: 1px 6px;
+  background-color: #ff8b4c;
+  line-height:1.4em;
+  display:inline-block;
+  margin: 0 0.2em;
+  color: #fff;
+}
+
+.celebrity-list li a .celebrity-info{
+  width: 52%;
+  line-height: 1.8em
+}
+
+.celebrity-list li a .celebrity-charm{
+  width: 28%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  font-size: 90%;
+  margin: -2.2em 0 0 0
+}
+
+.celebrity-list .addr{
+  font-size: 95%
+}
+
+.celebrity-list .addr span{
+  display: inline-block;
+  margin: 0 0.5em 0 0
+}
+
+.fire.icon{
+  width: 1.3em;
+  height: 1.3em;
+  margin: -6px 0 0 0;
+  background: url('../images/fire-icon.png') no-repeat 50% 50% / auto 100%;
+}
+.icon.small-local{
+  background: url('../images/small-local-icon.png') no-repeat 50% 50% / auto 96%
+}
+
+.hide{
+	display:none;
+}

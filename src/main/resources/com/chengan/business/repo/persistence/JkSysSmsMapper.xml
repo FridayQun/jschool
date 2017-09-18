@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengan.business.repo.entity.JkSysSmsMapper">
+	<resultMap id="BaseResultMap" type="com.chengan.business.repo.model.JkSysSms">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<result column="value" jdbcType="VARCHAR" property="value" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
+		<result column="sid" jdbcType="VARCHAR" property="sid" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+	</resultMap>
+</mapper>

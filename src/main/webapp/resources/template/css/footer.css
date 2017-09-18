@@ -1,0 +1,25 @@
+.img-container {
+	display: inline-block;
+	height: auto;
+	width: auto;
+	margin: 0;
+	padding: 10px;
+	position: relative;
+}
+
+.right-corner {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.img-container>.del-btn {
+	cursor: pointer;
+	transition: 0.5s;
+	transform: rotate(0);
+}
+
+.img-container>.del-btn:HOVER {
+	transition: 0.5s;
+	transform: rotate(180deg);
+}
