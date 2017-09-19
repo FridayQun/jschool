@@ -334,7 +334,7 @@ $(function() { // < !--调用Luara示例-->
 	// 轮播
 	$(".advertising").luara({
 		width: "295",
-		height: "512",
+		height: "333",
 		interval: 4500,
 		selected: "seleted",
 		deriction: "left"

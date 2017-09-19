@@ -27,9 +27,9 @@ public class ImageRemarkUtil {
 	// 水印透明度
 	private static float alpha = 0.5f;
 	// 水印横向位置
-	private static double positionWidth = 0.33;
+	private static double positionWidth = 0.85;
 	// 水印纵向位置
-	private static double positionHeight = 0.38;
+	private static double positionHeight = 0.85;
 
 	/**
 	 * @param alpha
@@ -113,8 +113,7 @@ public class ImageRemarkUtil {
 			// 6、水印图片的位置
 //			g.drawImage(img, (int) (buffImg.getWidth()*positionWidth), (int) (buffImg.getHeight()*positionHeight), (int) (buffImg.getWidth()*(1-positionWidth-0.05)), (int) (buffImg.getHeight()*(1-positionHeight-0.05)), null);
 //			g.drawImage(img, positionWidth, positionHeight, null);
-			g.drawImage(img, (int) (buffImg.getWidth()*positionWidth), (int) (buffImg.getHeight()*positionHeight)
-					, (int)(img.getWidth(null) * 0.3) , (int) (img.getHeight(null) * 0.3), null);
+			g.drawImage(img, (int) (buffImg.getWidth()*positionWidth), (int) (buffImg.getHeight()*positionHeight), (int) (buffImg.getWidth()*(1-positionWidth-0.05)), (int) (buffImg.getHeight()*(1-positionHeight-0.05)), null);
 			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 			// 7、释放资源
 			g.dispose();
