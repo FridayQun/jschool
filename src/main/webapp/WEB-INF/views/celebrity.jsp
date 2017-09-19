@@ -40,7 +40,7 @@
 		text-align: center;
 	}
 	.advice {
-		height: 330px;
+		height: 315px;
 		border-top: 1px solid #d2d2d2;
 		padding: 0 10px;
 		margin-bottom: 10px;
@@ -61,7 +61,7 @@ var ctx = '${ctx}';
 
   <div class="list-section">
     <div class="wrapper">
-      <div class="filter-box">
+      <div class="filter-box" style="border-right: none">
         <div class="filter-opts">
 <!--           <div class="filter-row-parent"> -->
 <!--             <div class="title">标签分类</div> -->
@@ -106,7 +106,7 @@ var ctx = '${ctx}';
           </div>
         </div>
         <!-- 伪造分割线 -->
-        <div style="width: 249px;position: absolute;top: -1px;right: 0;bottom: -1px;background: #f4f4f4;border-left: 1px solid rgb(210, 210, 210);border-top: 1px solid #f4f4f4;border-bottom: 1px solid #f4f4f4;z-index: 1;"></div>
+        <div style="width: 249px;position: absolute;top: -1px;right: 0;bottom: -1px;background: #f4f4f4;border-left: 1px solid rgb(210, 210, 210);border-top: 1px solid #f4f4f4;border-bottom: 1px solid #f4f4f4;z-index: 1;border-right:none;"></div>
         <div class="advertising" style="border: 1px solid rgb(210, 210, 210); top: -1px; z-index: 10; background: white;">
 			<ul>
 			<c:if test="${celebretyAds != null}">
@@ -224,7 +224,7 @@ var ctx = '${ctx}';
 	$(function(){
 		// <!--调用Luara示例-->
 		// 轮播
-		$(".advertising").luara({width:"235", height:"422", interval:4500, selected:"seleted", deriction:"left"});
+		$(".advertising").luara({width:"235", height:"331", interval:4500, selected:"seleted", deriction:"left"});
 	});
 
     $(function() {
