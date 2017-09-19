@@ -106,12 +106,12 @@ var ctx = '${ctx}';
           </div>
         </div>
         <!-- 伪造分割线 -->
-        <div style="width: 249px;position: absolute;top: -1px;right: 0;bottom: -1px;background: #f4f4f4;border-left: 1px solid rgb(210, 210, 210);border-top: 1px solid #f4f4f4;border-bottom: 1px solid #f4f4f4;z-index: 1;border-right:none;"></div>
+        <div style="width: 305.99px;position: absolute;top: -1px;right: 0;bottom: -1px;background: #f4f4f4;border-left: 1px solid rgb(210, 210, 210);border-top: 1px solid #f4f4f4;border-bottom: 1px solid #f4f4f4;z-index: 1;border-right:none;"></div>
         <div class="advertising" style="border: 1px solid rgb(210, 210, 210); top: -1px; z-index: 10; background: white;">
 			<ul>
 			<c:if test="${celebretyAds != null}">
 			<c:forEach var="celebretyAd" items="${celebretyAds }">
-				<li><a href="${celebretyAd.url}"><img style="width: 212px;height: 313px;padding: 9px;" src="${celebretyAd.image}" alt="1"/></a></li>
+				<li><a href="${celebretyAd.url}"><img style="width: 277px;height: 313px;padding: 9px;" src="${celebretyAd.image}" alt="1"/></a></li>
 			</c:forEach>
 			</c:if>
 			<c:if test="${celebretyAds == null}">
@@ -131,7 +131,7 @@ var ctx = '${ctx}';
 		</div>
       </div>
 	  <div style="display: block; width: 100%; height: auto; margin: 0; padding: 0; border: 0;">
-	  <div class="list-box" style="float: right; width: 19%;display: inline-block;margin-left: 0%;">
+	  <div class="list-box" style="float: right; width: 23.8%;display: inline-block;margin-left: 0%;">
 		<div style="
 			height: 65px;
 			padding: 0 20px;
@@ -160,7 +160,7 @@ var ctx = '${ctx}';
 			</div>
 		</c:forEach>
       </div>
-      <div class="list-box" style="width: 79.5%;display: inline-block;position: relative;padding: 0 0 50px 0; min-height: 990px">
+      <div class="list-box" style="width: 75.2%;display: inline-block;position: relative;padding: 0 0 50px 0; min-height: 990px">
         <div class="list-sort-bar">
           <span class="title">默认</span>
           <a style="display: none;" href="##" data-sort="s1" class="sort-btn">热度<i class="icon down"></i></a>
@@ -224,7 +224,7 @@ var ctx = '${ctx}';
 	$(function(){
 		// <!--调用Luara示例-->
 		// 轮播
-		$(".advertising").luara({width:"235", height:"331", interval:4500, selected:"seleted", deriction:"left"});
+		$(".advertising").luara({width:"295", height:"333", interval:4500, selected:"seleted", deriction:"left"});
 	});
 
     $(function() {
