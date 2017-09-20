@@ -40,8 +40,8 @@
         	<img style="opacity: 0" src="${ctx}/resources/mobile/images/default.png" alt=""></div>
         </c:if>
         <div class="user-desc">
-          <p><span class="user-name" style="display: inline-block; max-width: 60%;">${jkuser.nickname}</span><c:forEach var="item" items="${taglist}" begin="0" end="4"><span class="tags">${item.tagName}</span>
-           	</c:forEach></p>
+          <p><span class="user-name" style="display: inline-block; max-width: 60%;">${jkuser.nickname}</span><span><c:if test="${jkuser.userLevel == 2}"><c:if test="${jkuser.gender==2 }"><i class="icon gender-real-girl"></i></c:if><c:if test="${jkuser.gender!=2 }"><i class="icon gender-real-boy"></i></c:if></c:if><c:if test="${jkuser.userLevel != 2}"><c:if test="${jkuser.gender==2 }"><i class="icon gender-n-real-girl"></i></c:if><c:if test="${jkuser.gender!=2 }"><i class="icon gender-n-real-boy"></i></c:if></c:if></p><span><!--<c:forEach var="item" items="${taglist}" begin="0" end="4"><span class="tags">${item.tagName}</span>
+           	</c:forEach>--></p>
           <p><span>${jkuserinfo.eduName}</span><span class="charm">影响力 ${jkuser.influence}</span></p>
           <p style=" position: absolute; bottom: 0; height: 2.5em; text-align: center; width: 100%; left: 0; border-top: 1px solid #e1e1e1; padding-top: 0.5em; "><span style="display: inline-block;margin: 0 0.5rem 0 0;width: 45%;border-right: 1px solid #e1e1e1;"><a href="${ctx}/mobileuserino/tomyfolloeslist">${jkuser.follows }<br>我的关注</a></span>
 			<span style="display: inline-block;margin: 0 0.5rem 0 0;width: 45%;"><a href="${ctx}/mobileuserino/tomyfanslist">${jkuser.fans }<br>我的粉丝</a></span></p>
