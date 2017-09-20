@@ -198,7 +198,7 @@
                 <span><i class="icon clock"></i>'+(moment(item.createTime).fromNow())+'</span><br>\
                 <span><i class="icon small-local"></i>'+projLocation+'</span>\
                 <span>'+(item.companyName==null?item.eduName:item.companyName)+'</span>\
-                </p><p><i class="icon alarm"></i><span>'+applyDays+'</span><span>后截止申请</span><strong class="cost" style=" color: orange; ">￥'+item.moneyNeeds+'</strong>'+(item.istop!=0?'<span class="tag" style="display: inline-block; vertical-align: top; padding: 0 0.3em; margin: 0 0 0 0.5em; background-color: #ff5a00; color: #fff;">置顶</span>':'')+(item.uid==1?'<span class="tag" style="display: inline-block; vertical-align: top; padding: 0 0.3em; margin: 0 0 0 0.5em; background-color: #ff5a00; color: #fff;">自营</span>':'')+'</p></div></a></li>'
+                </p><p><i class="icon alarm"></i><span>'+applyDays+'</span><span>后截止</span><strong class="cost" style=" color: orange; ">￥'+item.moneyNeeds+'</strong>'+(item.istop!=0?'<span class="tag" style="display: inline-block; vertical-align: top; padding: 0 0.3em; margin: 0 0 0 0.5em; background-color: #ff5a00; color: #fff;">置顶</span>':'')+(item.uid==1?'<span class="tag" style="display: inline-block; vertical-align: top; padding: 0 0.3em; margin: 0 0 0 0.5em; background-color: #ff5a00; color: #fff;">自营</span>':'')+'</p></div></a></li>'
             )
           });
           empty ? $projectList.empty().append(nodeList.join('')) : $projectList.append(nodeList.join('')) ;
