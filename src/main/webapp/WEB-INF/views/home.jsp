@@ -292,7 +292,10 @@
 		                  <li style="font-size: 12px; overflow: initial;">
 		                    <div class="avatar" style="overflow: initial;"><c:if test="${fn:startsWith(student.head_pic_path, NORMAL_HEAD_ICON_URL) == false }"><img src="${student.head_pic_path}" alt=""></c:if><c:if test="${fn:startsWith(student.head_pic_path, NORMAL_HEAD_ICON_URL) == true }"><c:if test="${student.gender==2 }"><img src="${GIRL_HEAD_ICON_URL}" alt=""></c:if><c:if test="${student.gender!=2 }"><img src="${BOY_HEAD_ICON_URL}" alt=""></c:if></c:if><c:if test="${student.tag != null && student.tag != ''}"><i
                         style="
-                            color: black;
+                            font-style: initial;
+                            font-weight: bold;
+                            font-size: 12px;
+                            color: #de19c4;
                             position: absolute;
                             top: -17px;
                             right: 0;
