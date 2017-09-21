@@ -27,17 +27,19 @@
 		margin-right: 15px;
 	}
 	.tag {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 80px;
-		background-color: gold;
-		color: white;
-		border-radius: 3px;
-		filter: alpha(opacity=80);
-		-moz-opacity: 0.8;
-		opacity: 0.8;
-		text-align: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 57px;
+        background-color: #00adec;
+        font-weight: bold;
+        color: #FFFFFF;
+        text-align: center;
+        padding-right: 5px;
+        padding-left: 12px;
+        line-height: 1.8;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
 	}
 	.advice {
 		height: 315px;
@@ -251,23 +253,35 @@ var ctx = '${ctx}';
               urlStr = '<a href="##" onclick="showInfo3(null);">';
             var gender = item.gender == 2?'<i class="icon gender-girl"></i>':'<i class="icon gender-boy"></i>';
             var tag = item.tag?item.tag:'无';
+            var tagflag = item.tag?true:false;
             if(item.head_pic_path.startsWith(NORMAL_HEAD_ICON_URL)) {
-              if(item.gender == 2) {
+              if(item.gender == 2 && tagflag) {
                 return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'+
                 '<span class="tag">'+tag+'</span>'
                 +'<img src="' + GIRL_HEAD_ICON_URL + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i>' + item.influence +
               '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
-              } else {
+              } else if(tagflag) {
                 return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'+
                 '<span class="tag">'+tag+'</span>'
                 +'<img src="' + BOY_HEAD_ICON_URL + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i> ' + item.influence +
               '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
+              }else{
+                  return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'
+                  +'<img src="' + BOY_HEAD_ICON_URL + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i> ' + item.influence +
+                  '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
               }
             }
-            return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'+
+            if(tagflag){
+                return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'+
                 '<span class="tag">'+tag+'</span>'
                 +'<img src="' + item.head_pic_path + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i> ' + item.influence +
-              '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
+                '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
+            }
+            else{
+                return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'
+                +'<img src="' + item.head_pic_path + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i> ' + item.influence +
+                '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
+            }
           });
           $resultList.empty().append(nodeList.join(''));
         } else {
