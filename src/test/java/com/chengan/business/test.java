@@ -1,6 +1,10 @@
 package com.chengan.business;
 
 import com.chengan.business.project.dao.ProjectDao;
+import com.chengan.business.project.service.ProjectService;
+import com.chengan.business.repo.model.SMSApplyEntity;
+import com.chengan.business.task.QuartzJob;
+import com.chengan.business.util.AlidayuSmsUtil;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -14,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)  //使用junit4进行测试
@@ -23,28 +28,13 @@ import java.util.List;
 @TransactionConfiguration(transactionManager="transactionManager",defaultRollback=false)
 @Transactional
 public class test extends AbstractTransactionalJUnit4SpringContextTests {
+
 	@Autowired
-	ProjectDao projectDao;
+	QuartzJob quartzJob;
 
 	@Test
 	public void test() {
-		List<Integer> result = projectDao.getTimeList();
-		System.out.println("we come to here!");
-		for(Integer a : result){
-			System.out.println(a);
-			System.out.println("we come to here!");
-		}
+	    //测试申请项目后短信发送情况，定时发送短信，申请中的项目，如果当天有新增申请人，短信提醒查看。
+		quartzJob.applyOnce();
 	}
-
-	public static void main(String[] args) {
-		//System.getProperty("java.class.path");
-
-//		Date date = new Date();
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		String date2 = sdf.format(date);
-//		System.out.println(date2);
-//		System.out.println(sdf.format(new Date(date.getTime() - 1 * 24 * 60 * 60 * 1000)) + " " + "00:00:00");
-//		System.out.println(sdf.format(new Date(date.getTime() - 1 * 24 * 60 * 60 * 1000)) + " " + "23:59:59");
-	}
-
 }

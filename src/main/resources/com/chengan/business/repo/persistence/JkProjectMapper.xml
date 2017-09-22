@@ -332,7 +332,7 @@
 	<!--一天之内的申请-->
 	<select id="getTotalProjectByTime"
 			resultType="integer">
-		select pid from jk_project_apply
+		select DISTINCT pid from jk_project_apply
 		where unix_timestamp(create_time) &lt; unix_timestamp(now()) and unix_timestamp(create_time) &gt;= unix_timestamp(now())-3600*24
 	</select>
 	
