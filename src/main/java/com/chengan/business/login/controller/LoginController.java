@@ -3,11 +3,7 @@ package com.chengan.business.login.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
@@ -966,6 +962,12 @@ public class LoginController extends BaseController {
 		 */
 		// 登陆后获取用户信息
 		JkUser jkUser = userService.getUserById(user.getId());
+
+		if(jkUser.getLoginTime().getTime()/(1000*3600*24) + 1 == (new Date().getTime()/(1000*3600*24))) {
+			jkUser.setLoginTimes(jkUser.getLoginTimes()+1);
+			userService.update(jkUser);
+		}
+
 		// 登陆后获取用户详细信息
 		JkUserInfo jkUserInfo = userInfoService.getUserInfo(user.getId()).getT();
 		// 登陆后获取标签信息
