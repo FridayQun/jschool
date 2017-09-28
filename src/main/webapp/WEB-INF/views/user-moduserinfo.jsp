@@ -54,7 +54,7 @@ var idtype='${jkuser.idType}';
 			<div class="privacy-select">
 				<select class="myselect" name="privacy1" >
 
-				<c:choose>
+					<c:choose>
 				<c:when test="${jkuserinfo.permissions%10==1}">
 					<option value="1" selected ="selected">所有人可见</option>
 					<option value="2">仅自己可见</option>
