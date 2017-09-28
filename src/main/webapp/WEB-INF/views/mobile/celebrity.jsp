@@ -29,8 +29,8 @@
 <body>
 <div class="top-bar">
     <div class="search-bar">
-      <form class="searchForm" action="#" method="post">
-        <input type="search" name="keyWords" value="" autocomplete="off" placeholder="请输入赞助、活动、学校等关键字">
+      <form class="searchForm" action="#" method="get">
+        <input type="search" name="keywords" value="${keywords}" autocomplete="off" placeholder="请输入用户姓名关键字">
       </form>
 		<c:if test="${user_level==null||user_level==1 }">
 		<a href="#" onclick="showInfo(${user_level})" class="publish-link" style="line-height: 53px;color: white;font-size: 0.7rem;">发布</a>
@@ -304,7 +304,7 @@
           $.ajax({
               type: "GET",
               url: ctx+"/user/getUserList",
-              data: {"page":page,"pageSize":pageSize,"userlevel":2, "orderStr":orderStr},
+              data: {"page":page,"pageSize":pageSize,"userlevel":2, "orderStr":orderStr, "nicknmae": '${keywords}'},
               dataType: "json",
               success: function(data){      
             	  if(data.newsList.length > 0){
