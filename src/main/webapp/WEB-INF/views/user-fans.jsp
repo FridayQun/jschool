@@ -86,11 +86,10 @@ var ctx = '${ctx}';
 	</c:if>
 			</a>
 		</div>
-		<p style="margin: 0 15px;"><span style="width: 60%;display: inline-block;">${list[i]['nickname']}<span style="margin-left: 15px;display: inline-block;"><c:if test="${list[i]['gender'] == 2}"><i class="icon gender-girl"></i></c:if><c:if test="${list[i]['gender'] != 2}"><i class="icon gender-boy"></i></c:if></span></span><span style="float: right;"><i class="icon influence"></i><span style=" background: gainsboro; padding: 0 3px; border-radius: 3px; "><c:if test="${list[i]['influence'] != null}">${list[i]['influence']}</c:if><c:if test="${list[i]['influence'] == null}">0</c:if></span></span></p>
-		<p style="margin: 0 15px;"><c:if test="${list[i]['edu_name'] != null}">${list[i]['edu_name']}</c:if><c:if test="${list[i]['edu_name'] == null}">${list[i]['company_name']}</c:if>&nbsp;</p>
-		<p style="margin: 0 15px;">${list[i]['location']}&nbsp;</p>
-		<p style="margin: 5px 15px 0 15px;text-align: right;"><span class="add-or-remove-fans-or-follows" data-id="${list[i]['id']}" style="background: darkorange;margin: 0;padding: 1px 20px;border-radius: 3px;box-shadow: 0 0 5px darkorange; cursor: pointer; "><c:if test="${list[i]['followed'] == true}">已关注</c:if><c:if test="${list[i]['followed'] == false}">未关注</c:if></span></p>
-
+		<p style="margin: 0 15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><span style="width: 60%;display: inline-block;">${list[i]['nickname']}<span style="margin-left: 15px;display: inline-block;"><c:if test="${list[i]['gender'] == 2}"><i class="icon gender-girl"></i></c:if><c:if test="${list[i]['gender'] != 2}"><i class="icon gender-boy"></i></c:if></span></span><span style="float: right;"><i class="icon influence"></i><span style=" background: gainsboro; padding: 0 3px; border-radius: 3px; "><c:if test="${list[i]['influence'] != null}">${list[i]['influence']}</c:if><c:if test="${list[i]['influence'] == null}">0</c:if></span></span></p>
+		<p style="margin: 0 15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><c:if test="${list[i]['edu_name'] != null}">${list[i]['edu_name']}</c:if><c:if test="${list[i]['edu_name'] == null}">${list[i]['company_name']}</c:if>&nbsp;</p>
+		<p style="margin: 0 15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">${list[i]['location']}&nbsp;</p>
+		<p style="margin: 5px 15px 0 15px;text-align: right; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><span class="add-or-remove-fans-or-follows" data-id="${list[i]['id']}" style="background: darkorange;margin: 0;padding: 1px 20px;border-radius: 3px;box-shadow: 0 0 5px darkorange; cursor: pointer; "><c:if test="${list[i]['followed'] == true}">已关注</c:if><c:if test="${list[i]['followed'] == false}">未关注</c:if></span></p>
 	</div>
 	</li>
 
