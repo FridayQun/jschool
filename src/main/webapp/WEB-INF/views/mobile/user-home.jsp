@@ -137,7 +137,7 @@ i.display-bar:before {
 
     <ul class="user-home-list">
     <c:if test="${type==0 }">
-	    <li class="detail-item"><i class="icon ta-name"></i><span class="detail-area">姓名：${jkuser.username }</span></li>
+	    <li class="detail-item"><i class="icon ta-name"></i><span class="detail-area">姓名：${jkuser.nickname }</span></li>
 	    <li class="detail-item"><i class="icon ta-contact"></i><span class="detail-area">联系方式：${jkuser.phone }</span></li>
 	    <li class="detail-item"><i class="icon ta-area-icon"></i><span class="detail-area">地区：${jkuser.location }</span></li>
 	    <li class="detail-item"><i class="icon ta-school"></i><c:if test="${jkuser.idType==0}"><span class="detail-area">学校/公司：${jkuserinfo.eduName}</span></c:if><c:if test="${jkuser.idType==1}"><span class="detail-area">${jkuserinfo.companyName}</span></c:if></li>
