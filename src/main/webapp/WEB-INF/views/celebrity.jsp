@@ -30,7 +30,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: 57px;
+        width: 35%;
         background-color: #00adec;
         font-weight: bold;
         color: #FFFFFF;
@@ -40,6 +40,7 @@
         line-height: 1.8;
         border-top-left-radius: 50px;
         border-bottom-left-radius: 50px;
+        text-overflow: ellipsis;
 	}
 	.advice {
 		height: 315px;
@@ -260,11 +261,15 @@ var ctx = '${ctx}';
                 '<span class="tag">'+tag+'</span>'
                 +'<img src="' + GIRL_HEAD_ICON_URL + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i>' + item.influence +
               '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
-              } else if(tagflag) {
-                return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'+
-                '<span class="tag">'+tag+'</span>'
-                +'<img src="' + BOY_HEAD_ICON_URL + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i> ' + item.influence +
+              } else if(item.gender == 2 && !tagflag) {
+                return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'
+                +'<img src="' + GIRL_HEAD_ICON_URL + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i> ' + item.influence +
               '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
+              }else if(item.gender == 1 && tagflag){
+                  return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'+
+                  '<span class="tag">'+tag+'</span>'
+                  +'<img src="' + BOY_HEAD_ICON_URL + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i> ' + item.influence +
+                  '</span></div><p>' + companyOrEduName + '</p><p>'+fixStr(item.location)+'</p></a></li>')
               }else{
                   return ('<li>'+urlStr+'<div style="position:relative;" class="photo">'
                   +'<img src="' + BOY_HEAD_ICON_URL + '" alt=""></div><div class="user-info"><span class="user-name">' + item.nickname + '</span><span class="gender">'+gender+'</span><span class="user-charm"><i class="icon influence"></i> ' + item.influence +
