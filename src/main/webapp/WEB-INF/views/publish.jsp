@@ -158,7 +158,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="form-group-label"><strong>设置标签：</strong></div>
+                        <div class="form-group-label"><strong>设置标签：</strong><font style="color:grey">(选择标签不得超过5个)</font></div>
                         <div class="form-group-content"  id="projTags"></div>
                     </div>
                     <div class="form-group">
@@ -456,6 +456,19 @@
                 return ('<label class="label-btn"><input type="checkbox" name="tags" value="'+item.id+'" '+(item.checked ? 'checked="checked"':'')+'><span>'+item.tagName+'</span></label>')
             });
             $("#projTags").append(nodes.join(''));
+            (function () {
+                var flag = 0;
+                $("#projTags").find('input').on("change", function() {
+                    if($(this).prop("checked") == true && flag < 5){
+                        flag++;
+                    }else if($(this).prop('checked') == false){
+                        flag--;
+                    } else{
+                        $(this).prop('checked', false);
+                    }
+                });
+            })();
+
         }
     });
     //发布项目
