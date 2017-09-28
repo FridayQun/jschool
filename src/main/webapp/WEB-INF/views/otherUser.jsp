@@ -152,8 +152,13 @@
 
 				<p><span class='label'><i class="icon ta-name"></i>姓名：</span>${jkuser.username }</p>
 <%-- 	          	<c:if test="${pm2==1}">  --%>
-				<p><span class='label'><i class="icon ta-contact"></i>联系方式：</span>${jkuser.phone	}</p>
-				<p><span class='label'><i class="icon ta-area-icon"></i>地区：</span>${jkuser.location	}</p>
+			  <c:if test="${jkuserinfo.permissions%10 != 2}">
+				  <p><span class='label'><i class="icon ta-contact"></i>联系方式：</span>${jkuser.phone	}</p>
+			  </c:if>
+			  <c:if test="${jkuserinfo.permissions%10 == 2}">
+				  <p><span class='label'><i class="icon ta-contact"></i>联系方式：</span>***********</p>
+			  </c:if>
+			  <p><span class='label'><i class="icon ta-area-icon"></i>地区：</span>${jkuser.location	}</p>
 <%-- 	            </c:if> --%>
 <%-- 	            <c:if test="${pm2==2}">  --%>
 <!-- 	            	<p>联系方式:您无权限查看此用户信息</p> -->
@@ -553,19 +558,24 @@ $(function() {
 		}
 		empty && $list.html('');
 		var headLine = '<h3 style="border-bottom: 1px solid #e9e9e9;padding: 0.5em 0;margin: 0;color: #00adec;margin-left: 20px;margin-right: 20px;font-size: 22px;">个人信息</h3>';
-		headLine += '<h3 style="margin-left: 20px; margin-right: 20px;">基本信息</h3>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">真实姓名:</label>'+fixNull(data.userinfo.realname)+'</div>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">性别:</label>'+(data.user.gender==1?'男':'女')+'</div>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">地区:</label>'+fixNull(data.user.location)+'</div>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">简介:</label>'+fixNull(data.user.slogan)+'</div>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">个人标签:</label>'+joinTag(data.taglist)+'</div>';
-		headLine += '<h3 style="margin-left: 20px; margin-right: 20px;">联系方式</h3>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">电话:</label>'+fixNull(data.user.phone)+'</div>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">QQ:</label>'+fixNull(data.userinfo.contractQq)+'</div>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">微信:</label>'+fixNull(data.userinfo.contractWeixin)+'</div>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">微博:</label>'+fixNull(data.userinfo.contractWeibo)+'</div>';
-		headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">邮箱:</label>'+fixNull(data.userinfo.contractMail)+'</div>';
-		headLine += '<h3 style="margin-left: 20px; margin-right: 20px;">其他信息</h3>';
+        headLine += '<h3 style="margin-left: 20px; margin-right: 20px;">基本信息</h3>';
+		if(parseInt(data.userinfo.permissions%10) == 1) {
+            headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">真实姓名:</label>' + fixNull(data.userinfo.realname) + '</div>';
+		}
+        headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">性别:</label>' + (data.user.gender == 1 ? '男' : '女') + '</div>';
+        headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">地区:</label>' + fixNull(data.user.location) + '</div>';
+        headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">简介:</label>' + fixNull(data.user.slogan) + '</div>';
+        headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">个人标签:</label>' + joinTag(data.taglist) + '</div>';
+
+        if(parseInt(data.userinfo.permissions%100/10) == 1) {
+            headLine += '<h3 style="margin-left: 20px; margin-right: 20px;">联系方式</h3>';
+            headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">电话:</label>' + fixNull(data.user.phone) + '</div>';
+            headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">QQ:</label>' + fixNull(data.userinfo.contractQq) + '</div>';
+            headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">微信:</label>' + fixNull(data.userinfo.contractWeixin) + '</div>';
+            headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">微博:</label>' + fixNull(data.userinfo.contractWeibo) + '</div>';
+            headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">邮箱:</label>' + fixNull(data.userinfo.contractMail) + '</div>';
+        }
+        headLine += '<h3 style="margin-left: 20px; margin-right: 20px;">其他信息</h3>';
 		if(data.user.idType == 0) {
 			headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">学校名称:</label>'+fixNull(data.userinfo.eduName)+'</div>';
 			headLine += '<div class="form-group" style="margin: 10px 50px;"><label class="input-label" style="display: inline-block;width: 60px;text-align: left;margin-right: 20px;">入学时间:</label>'+fixNull(data.userinfo.eduTime)+'</div>';

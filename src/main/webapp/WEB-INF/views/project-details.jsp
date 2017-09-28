@@ -308,7 +308,7 @@
 					<ul class="recommend-list" style="height: 215px;box-sizing: content-box;white-space: nowrap;padding: 0;margin: 32px; overflow: visible;">
 					<c:forEach var="recommProj" items="${recommProjList}" >
 						<li style="padding: 10px;background: white;box-sizing: border-box;width: 234px;height: 215px;margin: 0 29.5px;">
-							<a href="${ctx}//login/toProjectDetail?id=${recommProj.id}">
+							<a href="${ctx}/login/toProjectDetail?id=${recommProj.id}">
 								<div class="project-photo"><img style="height: 100%;" src="${recommProj.projPicPath}" alt=""></div>
 								<div class="project-intro">
 									<h3 style="text-overflow: ellipsis; overflow: hidden;">${recommProj.projName }</h3>

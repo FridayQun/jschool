@@ -23,6 +23,26 @@ public class QuartzJob {
 	@Autowired
 	UserInfoService userInfoService;
 
+	/*
+	测试申请项目后短信发送情况，定时发送短信，申请中的项目，如果当天有新增申请人，短信提醒查看。
+	 */
+	public void applyOnce() {
+		Set<SMSApplyEntity> SMSApplyEntityList = projectService.getUserList();
+		if (SMSApplyEntityList == null || SMSApplyEntityList.equals(null) || SMSApplyEntityList.size() == 0) {
+			System.out.println("需要发送的申请短信为0，不需要发送申请短信");
+		} else {
+			//这里只要发一次对吧
+			System.out.println("不只要发一次短信,需要发"+SMSApplyEntityList.size()+"次短信！但是每个用户只能发一次");
+			for (SMSApplyEntity smsApplyEntity : SMSApplyEntityList) {
+				if (SMSApplyEntityList != null && SMSApplyEntityList.size() > 0)
+				//这里发送申请项目短信处
+					AlidayuSmsUtil.sendApplyMessage(smsApplyEntity, 4);
+				    System.out.println("我们在这里为手机号为"+smsApplyEntity.getTelnumber()+"的用户发了一次关于项目"+smsApplyEntity.getProjectname()+"的一条短信");
+
+			}
+		}
+	}
+
 	public void Pollball() {
 
 		//禁言定时减
@@ -62,22 +82,8 @@ public class QuartzJob {
 			List<Map<String, Object>> yearUser = tempuserService.gettempuserList(null, null, null,
 					null, null, null, YearBeforeTime2, YearBeforeTime1);
 
-			//这里是获取userList
-			Set<SMSApplyEntity> SMSApplyEntityList = projectService.getUserList();
-
 			//申请发送短信处
-			if(SMSApplyEntityList.size() == 0){
-				System.out.println("需要发送的申请短信为0，不需要发送申请短线");
-			}else{
-				//这里只要发一次对吧
-				for(SMSApplyEntity smsApplyEntity : SMSApplyEntityList){
-				if(SMSApplyEntityList!= null && SMSApplyEntityList.size()>0)
-				/**
-				 * 这里发送申请项目短信处
-				 */
-					AlidayuSmsUtil.sendApplyMessage(smsApplyEntity,4);
-				}
-			}
+			applyOnce();
 
 			if(weekUser.size() == 0){
 				System.out.println("需要发送周登录提醒的短信为0,周登录提醒短信不需要发送");

@@ -292,7 +292,10 @@
 		                  <li style="font-size: 12px; overflow: initial;">
 		                    <div class="avatar" style="overflow: initial;"><c:if test="${fn:startsWith(student.head_pic_path, NORMAL_HEAD_ICON_URL) == false }"><img src="${student.head_pic_path}" alt=""></c:if><c:if test="${fn:startsWith(student.head_pic_path, NORMAL_HEAD_ICON_URL) == true }"><c:if test="${student.gender==2 }"><img src="${GIRL_HEAD_ICON_URL}" alt=""></c:if><c:if test="${student.gender!=2 }"><img src="${BOY_HEAD_ICON_URL}" alt=""></c:if></c:if><c:if test="${student.tag != null && student.tag != ''}"><i
                         style="
-                            color: black;
+                            font-style: initial;
+                            font-weight: bold;
+                            font-size: 12px;
+                            color: #de19c4;
                             position: absolute;
                             top: -17px;
                             right: 0;
@@ -455,7 +458,7 @@
     height: 364px;background-color: rgb(242,242,242);color: rgb(139,139,139);"><div style="height: 364px; border: 0; margin: 0; padding: 0;"><p style="
     font-size: 25px;margin: 10px 30px;line-height: 40px;"><c:if test="${newsCateList!=null && fn:length(newsCateList) > 2}">${newsCateList[2].cateName}</c:if></p><ul style="
     list-style-type: disc;padding: 0 40px;margin: 10px 0;font-size: 20px;"><c:if test="${newsList!=null && fn:length(newsList)>2 && newsList[2]!=null && fn:length(newsList[2])>0}"><c:set var="length" value="${fn:length(newsList[2])>10?10:fn:length(newsList[2])}" /><c:forEach var="i" begin="1" end="${length-1}" step="1"><li style="
-    list-style-type: disc;margin: 3px 0;"><a href="${ctx}/login/toNewsDetails?id=${newsList[1][i].id}" style="text-overflow: ellipsis;
+    list-style-type: disc;margin: 3px 0;"><a href="${ctx}/login/toNewsDetails?id=${newsList[2][i].id}" style="text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     width: 100%;

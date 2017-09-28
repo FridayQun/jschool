@@ -120,12 +120,13 @@
           <div class="headline-item-desc" style="width: 56%;margin-left: 3%;height: 7em;margin: 0.2em auto;">\
           <div class="inner-box">\
           <p style="font-weight: bold;margin-top: 0.5em; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'+item.title+'</p>\
-          <div class="desc-body" style="height: 2.5em;text-overflow: ellipsis;white-space: nowrap;">'+getContentAbstract($(item.content))+'</div>\
-          <p style="font-size: small;" class="desc-footer"><span style="    display: inline-block;    width: 50%;    overflow: hidden;    text-overflow: ellipsis;    white-space: nowrap;">'+item.username+'&nbsp;&nbsp;'+(item.companyName==null?item.eduName:item.companyName)+'</span><span style="float: right;width: 49%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;" class="create-time">'+new Date(item.createTime).Format('yyyy年MM月dd日')+'</span></p>\
+          <div class="desc-body" style="color: #b7b7b7; margin-top: -0.5em;height: 2.5em;text-overflow: ellipsis;white-space: nowrap;">'+getContentAbstract($(item.content))+'</div>\
+          <p style="font-size: small; margin-bottom:0.5em" class="desc-footer"><span style="    display: inline-block;    width: 50%;    overflow: hidden;    text-overflow: ellipsis;    white-space: nowrap;">'+item.username+'</span><span style="float: right;width: 50%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;" class="create-time">'+new Date(item.createTime).Format('yyyy年MM月dd日')+'</span></p>\
           </div>\
           </div>\
           </a></li>')
         });
+        /*去掉公司或学校'+(item.companyName==null?item.eduName:item.companyName)+'*/
         empty ? $newList.empty().append(nodeList.join('')) : $newList.append(nodeList.join(''));
         
       }

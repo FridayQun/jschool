@@ -65,7 +65,6 @@ public class ProjectService extends BaseService {
 	        	System.out.println("并不存在这个，不进行任何操作。");
 			}else{
 				SMSApplyEntity entity = new SMSApplyEntity();
-				int uid = jkProject.getUid();
 				entity.setPid(jkProject.getId());
 				entity.setProjectname(jkProject.getProjName());
 				entity.setTelnumber(jkProject.getPhone());
