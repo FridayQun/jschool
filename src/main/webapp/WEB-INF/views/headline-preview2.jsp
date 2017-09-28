@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-            <div class="details-sidebar">
+            <div style="visibility: hidden;" class="details-sidebar">
                 <div class="author-info">
                     <div class="author-il">
                         <div class="author-avatar"><a href="javascript:;" onclick="checkLogin()"><img src="${(fn:startsWith(jkUser.headPicPath,NORMAL_HEAD_ICON_URL)||jkUser.headPicPath==null)?(jkUser.gender==2?GIRL_HEAD_ICON_URL:BOY_HEAD_ICON_URL):jkUser.headPicPath}" alt=""></a></div>
