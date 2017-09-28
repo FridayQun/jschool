@@ -197,7 +197,7 @@
                 </div>
             </div>
 
-            <div class="preview-sidebar" style="padding: 0px 10px 10px 10px;display: inline-block;margin: 0;">
+            <div class="preview-sidebar" style="visibility: hidden;padding: 0px 10px 10px 10px;display: inline-block;margin: 0;">
                 <div class="author-info" style="width: 272px; background: white;">
                     <div class="author-ir" style="float: right; width: 190px; text-align: left;">
                         <h3 style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-weight: normal;margin: 0.2em 0;font-size: 14px;">姓名：${projUser.nickname}<c:if test="${projUser.gender==2 }"><i class="icon gender-girl"></i></c:if><c:if test="${projUser.gender!=2 }"><i class="icon gender-boy"></i></c:if><span style=" font-weight: normal; background: gainsboro; padding: 0 6px; border-radius: 5px; line-height: 23px; margin: 0; ">${projUser.influence }</span></h3>
@@ -252,7 +252,7 @@
                 <!-- 项目推荐 END -->
             </div>
         </div>
-        <div class="recommend-box" style=" background: transparent; border: 0; ">
+        <div class="recommend-box" style="visibility: hidden; background: transparent; border: 0; ">
             <div class="recommend-title" style=" text-align: center; background: transparent; border: 0; font-weight: bold; ">猜你喜欢</div>
             <div id="recomment-box" style="overflow: hidden;height: 279px; position: relative;">
                 <div class="icon left-arrow prev-btn" style="

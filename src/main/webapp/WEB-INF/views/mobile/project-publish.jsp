@@ -75,13 +75,13 @@
       <div class="form-group">
         <div class="form-label">预算：</div>
         <div class="form-input">
-          <input class="input-style-w5" type="text" name="moneyNeeds" value="" placeholder="选填">/可议价
+          <input class="input-style-w5" type="number" name="moneyNeeds" value="" placeholder="选填">/可议价
         </div>
       </div>
       <div class="form-group">
         <div class="form-label">场次：</div>
         <div class="form-input">
-          <input class="input-style-w5" type="text" name="timesNumber" value="" placeholder="选填">/次
+          <input class="input-style-w5" type="number" name="timesNumber" value="" placeholder="选填">/次
         </div>
       </div>
       <div class="form-group">

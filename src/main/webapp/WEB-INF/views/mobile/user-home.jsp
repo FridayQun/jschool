@@ -417,7 +417,7 @@ $(function() {
 			});
 		} else {
 			$list.empty();
-			$list.append('<li class="detail-item"><i class="icon ta-name"></i><span class="detail-area">姓名：${jkuser.username }</span></li>');
+			$list.append('<li class="detail-item"><i class="icon ta-name"></i><span class="detail-area">姓名：${jkuser.nickname }</span></li>');
 			$list.append('<li class="detail-item"><i class="icon ta-contact"></i><span class="detail-area">联系方式：${jkuser.phone }</span></li>');
 			$list.append('<li class="detail-item"><i class="icon ta-area-icon"></i><span class="detail-area">地区：${jkuser.location }</span></li>');
 			$list.append('<li class="detail-item"><i class="icon ta-school"></i><c:if test="${jkuser.idType==0}"><span class="detail-area">学校/公司：${jkuserinfo.eduName}</span></c:if><c:if test="${jkuser.idType==1}"><span class="detail-area">学校/公司：${jkuserinfo.companyName}</span></c:if></li>');
@@ -436,7 +436,7 @@ $(function() {
 		if($(this).hasClass('active')) {
 			$.ajax({
 				type: "POST",
-				url: url+"/fansfollows/addfanfollow",
+				url: "${url}/fansfollows/addfanfollow",
 				data: {
 					fanid:$("#uid").val(),
 					followid:$("#infoid").val()
@@ -452,7 +452,7 @@ $(function() {
 		} else {
 			$.ajax({
 				type: "POST",
-				url: url+"/fansfollows/delfanfollow",
+				url: "${url}/fansfollows/delfanfollow",
 				data: {
 					fanid:$("#uid").val(),
 					followid:$("#infoid").val()
