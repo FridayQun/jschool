@@ -20,6 +20,7 @@
   <title>JingKe</title>
   <link rel="stylesheet" href="${ctx}/resources/artcle/css/style.css">
   <link rel="stylesheet" href="${ctx}/resources/artcle/css/user.css"><link rel="stylesheet" href="${ctx}/resources/artcle/css/DialogBySHF.css">
+  <link rel="stylesheet" href="${ctx}/resources/artcle/css/left-slider.css">
   <script>
   var url='${ctx}';
   var ctx = '${ctx}/resources/artcle';
@@ -126,30 +127,69 @@
           	<c:set var="pm3" ><fmt:parseNumber value="${(jkuserinfo.permissions / 100)%10}" integerOnly="true"/></c:set>
           	<c:set var="pm4" ><fmt:parseNumber value="${jkuserinfo.permissions/1000 }" integerOnly="true"/></c:set>
 
-				<p><span class='label'><i class="icon ta-name"></i>姓名：</span>${jkuser.username }</p>
-				<c:if test="${jkuserinfo.permissions%100 < 20}">
-					<p><span class='label'><i class="icon ta-contact"></i>联系方式：</span>${jkuser.phone	}</p>
-				</c:if>
-				<c:if test="${jkuserinfo.permissions%100 >= 20}">
-					<p><span class='label'><i class="icon ta-contact"></i>联系方式：</span>***********</p>
-				</c:if>
-				<p><span class='label'><i class="icon ta-area-icon"></i>地区：</span>${jkuser.location	}</p>
-				<p><span class='label'><i class="icon ta-school"></i>学校/公司：</span><c:if test="${jkuser.idType==0}">${jkuserinfo.eduName}</c:if><c:if test="${jkuser.idType==1}">${jkuserinfo.companyName}</c:if></p>
-				<p><span class='label'><i class="icon ta-profession"></i>专业/职位：</span><c:if test="${jkuser.idType==0}">${jkuserinfo.eduMajor}</c:if><c:if test="${jkuser.idType==1}">${jkuserinfo.departName}</c:if></p>
-					<p><span class='label'><i class="icon ta-corporation"></i>社团：</span>${jkuserinfo.eduClub}</p>
-				<p><span class='label'><i class="icon ta-self-intro-icon"></i>个人介绍：</span>${jkuser.slogan}</p>
-				<p style="
-					overflow: hidden;
-					height: 30px;
-				"><span class='label'><i class="icon ta-label-icon"></i>标签：</span><c:forEach var="item" items="${taglist}"
-					varStatus="status"><span style="
+			  <table style="border: 0px; table-layout: fixed">
+				  <tbody style="font-size: 16px;width: 100%;table-layout: fixed;">
+				  <tr class="tt">
+					  <td style="width: 140px;"><span><i class="icon ta-name"></i></span><span>姓名：</span></td>
+					  <td><span class="ss">${jkuser.nickname}</span></td>
+				  </tr>
+				  <c:if test="${jkuserinfo.permissions%100 < 20}">
+					  <tr class="tt">
+						  <td><span><i class="icon ta-contact"></i></span><span>联系方式：</span></td>
+						  <td><span class="ss">${jkuser.phone}</span></td>
+					  </tr>
+				  </c:if>
+				  <c:if test="${jkuserinfo.permissions%100 >= 20}">
+					  <td><span><i class="icon ta-contact"></i></span><span>联系方式：</span></td>
+					  <td><span class="ss">***********</span></td>
+				  </c:if>
+
+				  <tr class="tt">
+					  <td><span><i class="icon ta-area-icon"></i></span><span>地区：</span></td>
+					  <td><span class="ss">${jkuser.location}</span></td>
+				  </tr>
+				  <tr class="tt">
+					  <td><span><i class="icon ta-school"></i></span><span>学校/公司：</span></td>
+					  <td><span class="ss"><c:if test="${jkuser.idType==0}">${jkuserinfo.eduName}</c:if><c:if test="${jkuser.idType==1}">${jkuserinfo.companyName}</c:if></span></td>
+				  </tr>
+				  <tr class="tt">
+					  <td><span><i class="icon ta-profession"></i></span><span>专业/职位：</span></td>
+					  <c:if test="${jkuser.idType==0}"><td><span>${jkuserinfo.eduMajor}</span></td></c:if>
+					  <c:if test="${jkuser.idType==1}"><td><span class="ss">${jkuserinfo.departName}</span></td></c:if>
+				  </tr>
+				  <c:if test="${jkuser.idType!=1}">
+					  <tr class="tt">
+						  <td><span><i class="icon ta-corporation"></i></span></i><span>社团：</span></td>
+						  <td><span class="ss">${jkuserinfo.eduClub}</span></td>
+					  </tr>
+				  </c:if>
+				  <tr class="tt">
+					  <td><span><i class="icon ta-self-intro-icon"></i></span><span>个人介绍：</span></td>
+					  <td>
+						  <div style="width: 100%;
+    							padding: 0;
+    							margin: 0;
+    							overflow: hidden;
+    							text-overflow: ellipsis;
+								">
+					<span class="ss">${jkuser.slogan}
+					</span></div></td>
+				  </tr>
+				  <tr class="tt">
+					  <td><span><i class="icon ta-label-icon"></i></span><span>标签：</span></td>
+					  <td><c:forEach var="item" items="${taglist}"
+									 varStatus="status"><span  class="ss" style="
 						border-radius: 0.2em;
-						padding: 0.3em 0.7em;
+						padding: 0.1em 0.1em;
 						margin: 0 0.2em 0.5em 0.2em;
 						border: 1px solid #fe9a6e;
 						color: #fe9a6e;
-						line-height: 30px;
-					">${item.tagName}</span></c:forEach></p>
+						font-size: 3px;
+			">${item.tagName}</span></c:forEach></td>
+				  </tr>
+
+				  </tbody>
+			  </table>
 				<hr>
 				<div class='user-item' style='border: 0; width:auto; height:auto; margin: 0; padding: 0;'><div class='nav-col' style='border: 0; width:auto; height:auto; margin: 0; padding: 0;'><a data-api="5" style="
 				    text-align: center;

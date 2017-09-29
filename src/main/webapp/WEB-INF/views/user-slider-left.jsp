@@ -3,7 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <c:set var="ctx" value="<%=request.getContextPath()%>"/>
 <c:set var="url" value="<%=request.getContextPath()%>"/>
-
+<head>
+	<link rel="stylesheet" href="${ctx}/resources/artcle/css/left-slider.css">
+</head>
 <!-- 这个东西应当被单独放在一个地方 -->
 <%-- 需要的变量如下： --%>
 <%-- jkuser --%>
@@ -30,50 +32,61 @@
 			<div class="col" style='width: 160px; text-align: center;'><a href="${ctx}/login/toUser?item=security">账号管理</a></div>
 		</div>
 		<hr style="margin: 10px 0 20px 0;">
-		<table border="0" >
-			<tr>
-				<td style="width: 1%;height: 40px"><span><i class="icon ta-name"></i></span><span>姓名：</span></td>
-				<td><span>${jkuser.nickname}</span></td>
+		<table style="border: 0px; table-layout: fixed">
+			<tbody style="font-size: 16px;width: 100%;table-layout: fixed;">
+			<tr class="tt">
+				<td style="width: 140px;"><span><i class="icon ta-name"></i></span><span>姓名：</span></td>
+				<td><span class="ss">${jkuser.nickname}</span></td>
 			</tr>
-			<tr>
+			<tr class="tt">
 				<td><span><i class="icon ta-contact"></i></span><span>联系方式：</span></td>
-				<td><span>${jkuser.phone}</span></td>
+				<td><span class="ss">${jkuser.phone}</span></td>
 			</tr>
-			<tr>
+			<tr class="tt">
 				<td><span><i class="icon ta-area-icon"></i></span><span>地区：</span></td>
-				<td><span>${jkuser.location}</span></td>
+				<td><span class="ss">${jkuser.location}</span></td>
 			</tr>
-			<tr>
+			<tr class="tt">
 				<td><span><i class="icon ta-school"></i></span><span>学校/公司：</span></td>
-				<td><span><c:if test="${jkuser.idType==0}">${jkuserinfo.eduName}</c:if><c:if test="${jkuser.idType==1}">${jkuserinfo.companyName}</c:if></span></td>
+				<td><span class="ss"><c:if test="${jkuser.idType==0}">${jkuserinfo.eduName}</c:if><c:if test="${jkuser.idType==1}">${jkuserinfo.companyName}</c:if></span></td>
 			</tr>
-			<tr>
+			<tr class="tt">
 				<td><span><i class="icon ta-profession"></i></span><span>专业/职位：</span></td>
 				<c:if test="${jkuser.idType==0}"><td><span>${jkuserinfo.eduMajor}</span></td></c:if>
-				<c:if test="${jkuser.idType==1}"><td><span>${jkuserinfo.departName}</span></td></c:if>
+				<c:if test="${jkuser.idType==1}"><td><span class="ss">${jkuserinfo.departName}</span></td></c:if>
 			</tr>
 			<c:if test="${jkuser.idType!=1}">
-				<tr>
+				<tr class="tt">
 					<td><span><i class="icon ta-corporation"></i></span></i><span>社团：</span></td>
-					<td><span>${jkuserinfo.eduClub}<span></td>
+					<td><span class="ss">${jkuserinfo.eduClub}</span></td>
 				</tr>
 			</c:if>
-			<tr>
+			<tr class="tt">
 				<td><span><i class="icon ta-self-intro-icon"></i></span><span>个人介绍：</span></td>
-				<td><span>${jkuser.slogan}</span></td>
+				<td>
+					<div style="width: 100%;
+    							padding: 0;
+    							margin: 0;
+    							overflow: hidden;
+    							text-overflow: ellipsis;
+								">
+					<span class="ss">${jkuser.slogan}
+					</span></div></td>
 			</tr>
-			<tr style="overflow: hidden;height: 30px;">
+			<tr class="tt">
 				<td><span><i class="icon ta-label-icon"></i></span><span>标签：</span></td>
 				<td><c:forEach var="item" items="${taglist}"
-						varStatus="status"><span style="
+						varStatus="status"><span  class="ss" style="
 						border-radius: 0.2em;
-						padding: 0.3em 0.7em;
+						padding: 0.1em 0.1em;
 						margin: 0 0.2em 0.5em 0.2em;
 						border: 1px solid #fe9a6e;
 						color: #fe9a6e;
-						line-height: 30px;
+						font-size: 3px;
 			">${item.tagName}</span></c:forEach></td>
 			</tr>
+
+			</tbody>
 		</table>
 		<hr>
 		<div class='user-item' style='border: 0; width:auto; height:auto; margin: 0; padding: 0;'><div class='nav-col' style='border: 0; width:auto; height:auto; margin: 0; padding: 0;'><a data-api="5" style="
