@@ -75,13 +75,13 @@
       <div class="form-group">
         <div class="form-label">预算：</div>
         <div class="form-input">
-          <input class="input-style-w5" type="number" name="moneyNeeds" value="" placeholder="选填">/可议价
+          <input class="input-style-w5" type="number" onkeypress='return (/[\d]/.test(String.fromCharCode(event.keyCode)))' name="moneyNeeds" value="" placeholder="选填">/可议价
         </div>
       </div>
       <div class="form-group">
         <div class="form-label">场次：</div>
         <div class="form-input">
-          <input class="input-style-w5" type="number" name="timesNumber" value="" placeholder="选填">/次
+          <input class="input-style-w5" type="number" onkeypress='return (/[\d]/.test(String.fromCharCode(event.keyCode)))' name="timesNumber" value="" placeholder="选填">/次
         </div>
       </div>
       <div class="form-group">
@@ -104,13 +104,13 @@
         </div>
       </div>
       <div class="form-group">
-        <div class="form-label">标签：</div>
-        <div class="form-input">
+        <div class="form-label">标签：<font style="color:grey">(选择标签不得超过5个)</font></div>
+        <div class="form-input" id = "tagPro">
           <c:forEach var="tag" items="${tagList }">
 	          <label class="checkbox-btn"><input type="checkbox" name="tags" value="${tag.id }"><span>${tag.tagName }</span></label>
           </c:forEach>
         </div>
-      </div> 
+      </div>
      <div class="form-submit-bar">
 <!--         <input type="submit" name="submit" value="保存"> -->
         <input type="submit" name="submit" value="发布">
@@ -180,6 +180,19 @@
     	  }
       });
     });
+
+    (function () {
+        var flag = 0;
+        $("#tagPro").find('input').on("change", function() {
+            if($(this).prop("checked") == true && flag < 5){
+                flag++;
+            }else if($(this).prop('checked') == false){
+                flag--;
+            } else{
+                $(this).prop('checked', false);
+            }
+        });
+    })();
     
     function gradeChange(){
     	var firstCateId = $("#firstCate").val();
