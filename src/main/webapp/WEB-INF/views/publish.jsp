@@ -77,7 +77,7 @@
                         <div class="form-group-label"><strong>明确预算：</strong></div>
                         <div class="form-group-content">
                             <label>
-                                <input type="number" max="600000" min="0" class="input-style w2" name="moneyNeeds"  id="moneyNeeds" value="" placeholder="选填" >
+                                <input type="number" onkeypress='return (/[\d]/.test(String.fromCharCode(event.keyCode)))' max="600000" min="0" class="input-style w2" name="moneyNeeds"  id="moneyNeeds" value="" placeholder="选填" >
                                 <select class="reserve-select" onchange="this.previousElementSibling.value=this.value">
                                     <option value="100">100</option>
                                     <option value="500">500</option>
@@ -94,7 +94,7 @@
                     <div class="form-group">
                         <div class="form-group-label"><strong>场次／数量</strong></div>
                         <div class="form-group-content">
-                            <label><input type="number" class="input-style w2" name="timesNumber"  id="timesNumber" value="" placeholder="" ></label>
+                            <label><input type="number" onkeypress='return (/[\d]/.test(String.fromCharCode(event.keyCode)))' class="input-style w2" name="timesNumber"  id="timesNumber" value="" placeholder="" ></label>
                         </div>
                     </div>
                     <div class="form-group">
