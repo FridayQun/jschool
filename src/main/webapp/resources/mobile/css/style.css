@@ -615,6 +615,9 @@ ul, ol, li {
 	height: 1.1em;
 	background: url("../images/clock-icon.png") no-repeat 50% 50%/auto 100%;
 }
+.forP{
+	display: inline;
+}
 
 .icon.ta-name {
 	background-image: url(../images/ta_name.png);

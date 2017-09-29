@@ -30,26 +30,51 @@
 			<div class="col" style='width: 160px; text-align: center;'><a href="${ctx}/login/toUser?item=security">账号管理</a></div>
 		</div>
 		<hr style="margin: 10px 0 20px 0;">
-
-		<p><span class='label'><i class="icon ta-name"></i>姓名：</span>${jkuser.nickname }</p>
-		<p><span class='label'><i class="icon ta-contact"></i>联系方式：</span>${jkuser.phone	}</p>
-		<p><span class='label'><i class="icon ta-area-icon"></i>地区：</span>${jkuser.location	}</p>
-		<p><span class='label'><i class="icon ta-school"></i>学校/公司：</span><c:if test="${jkuser.idType==0}">${jkuserinfo.eduName}</c:if><c:if test="${jkuser.idType==1}">${jkuserinfo.companyName}</c:if></p>
-		<p><span class='label'><i class="icon ta-profession"></i>专业/职位：</span><c:if test="${jkuser.idType==0}">${jkuserinfo.eduMajor}</c:if><c:if test="${jkuser.idType==1}">${jkuserinfo.departName}</c:if></p>
-		<c:if test="${jkuser.idType!=1}"><p><span class='label'><i class="icon ta-corporation"></i>社团：</span>${jkuserinfo.eduClub}</p></c:if>
-		<p><span class='label'><i class="icon ta-self-intro-icon"></i>个人介绍：</span>${jkuser.slogan}</p>
-		<p style="
-			overflow: hidden;
-			height: 30px;
-		"><span class='label'><i class="icon ta-label-icon"></i>标签：</span><c:forEach var="item" items="${taglist}"
-			varStatus="status"><span style="
-				border-radius: 0.2em;
-				padding: 0.3em 0.7em;
-				margin: 0 0.2em 0.5em 0.2em;
-				border: 1px solid #fe9a6e;
-				color: #fe9a6e;
-				line-height: 30px;
-			">${item.tagName}</span></c:forEach></p>
+		<table border="0" >
+			<tr>
+				<td style="width: 1%;height: 40px"><span><i class="icon ta-name"></i></span><span>姓名：</span></td>
+				<td><span>${jkuser.nickname}</span></td>
+			</tr>
+			<tr>
+				<td><span><i class="icon ta-contact"></i></span><span>联系方式：</span></td>
+				<td><span>${jkuser.phone}</span></td>
+			</tr>
+			<tr>
+				<td><span><i class="icon ta-area-icon"></i></span><span>地区：</span></td>
+				<td><span>${jkuser.location}</span></td>
+			</tr>
+			<tr>
+				<td><span><i class="icon ta-school"></i></span><span>学校/公司：</span></td>
+				<td><span><c:if test="${jkuser.idType==0}">${jkuserinfo.eduName}</c:if><c:if test="${jkuser.idType==1}">${jkuserinfo.companyName}</c:if></span></td>
+			</tr>
+			<tr>
+				<td><span><i class="icon ta-profession"></i></span><span>专业/职位：</span></td>
+				<c:if test="${jkuser.idType==0}"><td><span>${jkuserinfo.eduMajor}</span></td></c:if>
+				<c:if test="${jkuser.idType==1}"><td><span>${jkuserinfo.departName}</span></td></c:if>
+			</tr>
+			<c:if test="${jkuser.idType!=1}">
+				<tr>
+					<td><span><i class="icon ta-corporation"></i></span></i><span>社团：</span></td>
+					<td><span>${jkuserinfo.eduClub}<span></td>
+				</tr>
+			</c:if>
+			<tr>
+				<td><span><i class="icon ta-self-intro-icon"></i></span><span>个人介绍：</span></td>
+				<td><span>${jkuser.slogan}</span></td>
+			</tr>
+			<tr style="overflow: hidden;height: 30px;">
+				<td><span><i class="icon ta-label-icon"></i></span><span>标签：</span></td>
+				<td><c:forEach var="item" items="${taglist}"
+						varStatus="status"><span style="
+						border-radius: 0.2em;
+						padding: 0.3em 0.7em;
+						margin: 0 0.2em 0.5em 0.2em;
+						border: 1px solid #fe9a6e;
+						color: #fe9a6e;
+						line-height: 30px;
+			">${item.tagName}</span></c:forEach></td>
+			</tr>
+		</table>
 		<hr>
 		<div class='user-item' style='border: 0; width:auto; height:auto; margin: 0; padding: 0;'><div class='nav-col' style='border: 0; width:auto; height:auto; margin: 0; padding: 0;'><a data-api="5" style="
 			text-align: center;
