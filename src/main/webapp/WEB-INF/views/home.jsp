@@ -99,7 +99,7 @@
           <div class="section-more"><a href="${ctx}/login/toProjectList?firstCateId=${supportCateList[0].parentId}">更多<br><small>MORE</small></a></div>
         </div>
         <div class="section-list-block">
-          <ul class="section-list" style="padding-left: 25px;padding-right: 25px;">        
+          <ul class="section-list" style="padding-left: 20px;padding-right: 20px;">
               <c:forEach var="supportProject" items="${supportProjectList}" >
 	          	<li class="${supportProject.projType==0?'demand':'supply'}">
 	              <a href="${ctx}/login/toProjectDetail?id=${supportProject.id}">
@@ -111,7 +111,7 @@
 	                  </div>
 	                  <div class="desc-row">
 	                  	<div class="col-l font12" style="line-height: 1.5em;">${supportProject.username}<c:if test="${supportProject.gender==2 }"><i style="margin-left: 4px;" class="icon gender-girl"></i></c:if><c:if test="${supportProject.gender!=2 }"><i style="margin-left: 4px;" class="icon gender-boy"></i></c:if></div>
-	                  	<div class="col-r" style="color: black;"><c:if test="${supportProject.companyName!=null }">${supportProject.companyName}</c:if><c:if test="${supportProject.companyName==null }">${supportProject.eduName}</c:if></div>
+	                  	<div class="col-r" style="color: black; overflow: hidden; text-overflow: ellipsis; width: 27%;"><c:if test="${supportProject.companyName!=null }">${supportProject.companyName}</c:if><c:if test="${supportProject.companyName==null }">${supportProject.eduName}</c:if></div>
 	                  </div>
 	                  <div class="desc-row" style="margin-top: 0.3em;">
 	                    <div class="col-l cost" style="font-size: 16px;">￥${supportProject.moneyNeeds }<c:if test="${supportProject.uid==1 }"><i style="margin-left: 15px; margin-right: 0;" class="icon self-support"></i><span style="color: #b0b0b0;font-size: 15px;line-height: 20px;">自营</span></c:if></div>
@@ -135,7 +135,7 @@
           <div class="section-more"><a href="${ctx}/login/toProjectList?firstCateId=${addressCateList[0].parentId}">更多<br><small>MORE</small></a></div>
         </div>
         <div class="section-list-block">
-          <ul class="section-list" style="padding-left: 25px;padding-right: 25px;">
+          <ul class="section-list" style="padding-left: 20px;padding-right: 20px;">
           
               <c:forEach var="addressProject" items="${addressProjectList}" >
 	          	<li class="${addressProject.projType==0?'demand':'supply'}">
@@ -148,7 +148,7 @@
 	                  </div>
 	                  <div class="desc-row">
 	                  	<div class="col-l font12" style="line-height: 1.5em;">${addressProject.username}<c:if test="${addressProject.gender==2 }"><i style="margin-left: 4px;" class="icon gender-girl"></i></c:if><c:if test="${addressProject.gender!=2 }"><i style="margin-left: 4px;" class="icon gender-boy"></i></c:if></div>
-	                  	<div class="col-r" style="color: black;"><c:if test="${addressProject.companyName!=null }">${addressProject.companyName}</c:if><c:if test="${addressProject.companyName==null }">${addressProject.eduName}</c:if></div>
+	                  	<div class="col-r"  style="color: black; overflow: hidden; text-overflow: ellipsis; width: 27%;"><c:if test="${addressProject.companyName!=null }">${addressProject.companyName}</c:if><c:if test="${addressProject.companyName==null }">${addressProject.eduName}</c:if></div>
 	                  </div>
 	                  <div class="desc-row" style="margin-top: 0.3em;">
 	                    <div class="col-l cost" style="font-size: 16px;">￥${addressProject.moneyNeeds }<c:if test="${addressProject.uid==1 }"><i style="margin-left: 15px;  margin-right: 0;" class="icon self-support"></i><span style="color: #b0b0b0;font-size: 15px;line-height: 20px;">自营</span></c:if></div>
@@ -172,7 +172,7 @@
           <div class="section-more"><a href="${ctx}/login/toProjectList?firstCateId=${onlineMediaCateList[0].parentId}">更多<br><small>MORE</small></a></div>
         </div>
         <div class="section-list-block">
-          <ul class="section-list" style="padding-left: 25px;padding-right: 25px;">
+          <ul class="section-list" style="padding-left: 20px;padding-right: 20px;">
              <c:forEach var="onlineMediaProject" items="${onlineMediaProjectList}" >
           	    <li class="${onlineMediaProject.projType==0?'demand':'supply'}">
 	              <a href="${ctx}/login/toProjectDetail?id=${onlineMediaProject.id}">
@@ -184,7 +184,7 @@
 	                  </div>
 	                  <div class="desc-row">
 	                  	<div class="col-l font12" style="line-height: 1.5em;">${onlineMediaProject.username}<c:if test="${onlineMediaProject.gender==2 }"><i style="margin-left: 4px;" class="icon gender-girl"></i></c:if><c:if test="${onlineMediaProject.gender!=2 }"><i style="margin-left: 4px;" class="icon gender-boy"></i></c:if></div>
-	                  	<div class="col-r" style="color: black;"><c:if test="${onlineMediaProject.companyName!=null }">${onlineMediaProject.companyName}</c:if><c:if test="${onlineMediaProject.companyName==null }">${onlineMediaProject.eduName}</c:if></div>
+	                  	<div class="col-r" style="color: black; overflow:hidden; text-overflow: ellipsis; width: 27%'"><c:if test="${onlineMediaProject.companyName!=null }">${onlineMediaProject.companyName}</c:if><c:if test="${onlineMediaProject.companyName==null }">${onlineMediaProject.eduName}</c:if></div>
 	                  </div>
 	                  <div class="desc-row" style="margin-top: 0.3em;">
 	                    <div class="col-l cost" style="font-size: 16px;">￥${onlineMediaProject.moneyNeeds }<c:if test="${onlineMediaProject.uid==1 }"><i style="margin-left: 15px; margin-right: 0;" class="icon self-support"></i><span style="color: #b0b0b0;font-size: 15px;line-height: 20px;">自营</span></c:if></div>
@@ -814,7 +814,7 @@
             $listBox.addClass('loading');
             function render(data){
             	'<i class="icon user"></i>';
-              var list = '<ul class="section-list" style="padding-left: 25px;padding-right: 25px;">';
+              var list = '<ul class="section-list" style="padding-left: 20px;padding-right: 20px;">';
               var newsList = data.newsList;
               newsList.forEach(function(item,index){
 	            var isZy = ""
@@ -827,12 +827,13 @@
                         <div class="photo"><img src="'+item.projPicPath+'" alt=""></div><div class="desc"><div class="desc-row">\
                         <div class="col-l">'+item.projName+'</div><div class="col-r" style="line-height: 16px;width: 30%;"><span style="vertical-align: middle;margin-right: 2px;">浏览量</span><span style="font-size: 12px;line-height: 20px; vertical-align: top;">'+item.browsevolume+'</span></div></div>\
                         <div class="desc-row"><div class="col-l font12" style="line-height: 1.5em;">'+item.username+(item.gender==2?'<i style="margin-left: 4px;" class="icon gender-girl"></i>':'<i style="margin-left: 4px;" class="icon gender-boy"></i>')+'</div>\
-                        <div class="col-r" style="color: black;">'+(item.companyName!=null?item.companyName:item.eduName)+'</div></div>'+
+                        <div class="col-r" style="color: black; overflow: hidden; text-overflow: ellipsis; width: 27%;">'+(item.companyName!=null?item.companyName:item.eduName)+'</div></div>'+
                         '<div class="desc-row" style="margin-top: 0.3em;"><div class="col-l cost" style="font-size: 16px;">￥'+item.moneyNeeds+(item.uid==1?'<i style="margin-left: 15px; margin-right: 0;" class="icon self-support"></i><span style="color: #b0b0b0;font-size: 15px;line-height: 20px;">自营</span>':'')+'</div>\
                         <div class="col-r">'+new Date(item.createTime).Format("yyyy-MM-dd")+'</div></div></div></a></li>';
               });
               list += '</ul>';
               $listBox.empty().append(list);
+              $('.section-list').children('li:eq(5)').css('clear','both');
               $listBox.removeClass('loading');
             }
             uri && $.getJSON(uri,function(json){
@@ -986,6 +987,8 @@
     
     // 头条显示第一个tab
     $(document).ready(function() {
+        $('.section-list').children('li:eq(5)').css('clear', "both");
+
     	function getText(item) {
     		var text = '';console.log(item.childNodes);
     		item.childNodes.forEach(function(cItem) {

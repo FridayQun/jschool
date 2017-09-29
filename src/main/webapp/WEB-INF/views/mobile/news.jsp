@@ -141,6 +141,7 @@
       //选择分类
       $filterList.on('tap','li',function(){
     	var $self = $(this);
+    	$('.sort-bar').children('span').html($self.html());
         $filterList.addClass('closed');
 	  	setTimeout(function(){
 			type = $self.data('type');
