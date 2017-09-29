@@ -15,7 +15,8 @@
   <title>JingKe</title>
   <link rel="stylesheet" href="${ctx}/resources/artcle/css/style.css">
   <link rel="stylesheet" href="${ctx}/resources/artcle/css/user.css"><link rel="stylesheet" href="${ctx}/resources/artcle/css/DialogBySHF.css">
-  <script>
+	<link rel="stylesheet" href="${ctx}/resources/artcle/css/left-slider.css">
+	<script>
   var url='${ctx}';
   var ctx = '${ctx}/resources/artcle';
   </script>  
