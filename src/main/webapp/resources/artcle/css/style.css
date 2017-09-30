@@ -713,6 +713,7 @@ ul, ol, li {
   right: 0;
   font-size: 12px;
   color: #b0b0b0;
+  white-space: nowrap;
 }
 
 .section-list .desc-row .cost {
